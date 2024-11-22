@@ -1,4 +1,4 @@
-.idea/
+/.idea/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -23,3 +23,7 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> vincentlanglet/twig-cs-fixer ###
+/.twig-cs-fixer.cache
+###< vincentlanglet/twig-cs-fixer ###

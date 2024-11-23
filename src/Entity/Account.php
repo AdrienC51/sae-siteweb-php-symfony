@@ -37,6 +37,9 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $lastname = null;
 
+    #[ORM\OneToOne(mappedBy: 'account', cascade: ['persist', 'remove'])]
+    private ?Admin $admin = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,6 +135,23 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): static
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?Admin
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(Admin $admin): static
+    {
+        // set the owning side of the relation if necessary
+        if ($admin->getAccount() !== $this) {
+            $admin->setAccount($this);
+        }
+
+        $this->admin = $admin;
 
         return $this;
     }

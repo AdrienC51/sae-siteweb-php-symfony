@@ -18,7 +18,11 @@ class Restocking
     private ?\DateTimeInterface $restockDate = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $status = null; //Value = "Pending", "Received"
+    private ?string $status = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Restockings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Admin $admin = null; //Value = "Pending", "Received"
 
     public function getId(): ?int
     {
@@ -45,6 +49,18 @@ class Restocking
     public function setStatus(string $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?Admin
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Admin $admin): static
+    {
+        $this->admin = $admin;
 
         return $this;
     }

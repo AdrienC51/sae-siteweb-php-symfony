@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Contain;
+use App\Entity\OrderLine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Contain>
+ * @extends ServiceEntityRepository<OrderLine>
  */
-class ContainRepository extends ServiceEntityRepository
+class OrderLineRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Contain::class);
+        parent::__construct($registry, OrderLine::class);
     }
 
     //    /**
-    //     * @return Contain[] Returns an array of Contain objects
+    //     * @return OrderLine[] Returns an array of OrderLine objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('c.id', 'ASC')
+    //            ->orderBy('o.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Contain
+    //    public function findOneBySomeField($value): ?OrderLine
     //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

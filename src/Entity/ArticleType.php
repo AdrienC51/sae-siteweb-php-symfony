@@ -34,9 +34,16 @@ class ArticleType
     #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'articleType')]
     private Collection $orderLines;
 
+    /**
+     * @var Collection<int, CartLine>
+     */
+    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'articleType', orphanRemoval: true)]
+    private Collection $cartLines;
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
+        $this->cartLines = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,6 +123,36 @@ class ArticleType
             // set the owning side to null (unless already changed)
             if ($orderLine->getArticleType() === $this) {
                 $orderLine->setArticleType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CartLine>
+     */
+    public function getCartLines(): Collection
+    {
+        return $this->cartLines;
+    }
+
+    public function addCartLine(CartLine $cartLine): static
+    {
+        if (!$this->cartLines->contains($cartLine)) {
+            $this->cartLines->add($cartLine);
+            $cartLine->setArticleType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartLine(CartLine $cartLine): static
+    {
+        if ($this->cartLines->removeElement($cartLine)) {
+            // set the owning side to null (unless already changed)
+            if ($cartLine->getArticleType() === $this) {
+                $cartLine->setArticleType(null);
             }
         }
 

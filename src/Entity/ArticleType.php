@@ -40,10 +40,17 @@ class ArticleType
     #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'articleType', orphanRemoval: true)]
     private Collection $cartLines;
 
+    /**
+     * @var Collection<int, RestockingLine>
+     */
+    #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'articleType')]
+    private Collection $restockingLines;
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
         $this->cartLines = new ArrayCollection();
+        $this->restockingLines = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,6 +160,36 @@ class ArticleType
             // set the owning side to null (unless already changed)
             if ($cartLine->getArticleType() === $this) {
                 $cartLine->setArticleType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RestockingLine>
+     */
+    public function getRestockingLines(): Collection
+    {
+        return $this->restockingLines;
+    }
+
+    public function addRestockingLine(RestockingLine $restockingLine): static
+    {
+        if (!$this->restockingLines->contains($restockingLine)) {
+            $this->restockingLines->add($restockingLine);
+            $restockingLine->setArticleType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRestockingLine(RestockingLine $restockingLine): static
+    {
+        if ($this->restockingLines->removeElement($restockingLine)) {
+            // set the owning side to null (unless already changed)
+            if ($restockingLine->getArticleType() === $this) {
+                $restockingLine->setArticleType(null);
             }
         }
 

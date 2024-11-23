@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,7 +37,18 @@ class Order
     private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Delivery $delivery = null; //Value = "Accepted", "In preparation", "Being delivered", "Delivered"
+    private ?Delivery $delivery = null;
+
+    /**
+     * @var Collection<int, OrderLine>
+     */
+    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'relatedOrder', orphanRemoval: true)]
+    private Collection $orderLines;
+
+    public function __construct()
+    {
+        $this->orderLines = new ArrayCollection();
+    } //Value = "Accepted", "In preparation", "Being delivered", "Delivered"
 
     public function getId(): ?int
     {
@@ -122,6 +135,36 @@ class Order
     public function setDelivery(?Delivery $delivery): static
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderLine>
+     */
+    public function getOrderLines(): Collection
+    {
+        return $this->orderLines;
+    }
+
+    public function addOrderLine(OrderLine $orderLine): static
+    {
+        if (!$this->orderLines->contains($orderLine)) {
+            $this->orderLines->add($orderLine);
+            $orderLine->setRelatedOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderLine(OrderLine $orderLine): static
+    {
+        if ($this->orderLines->removeElement($orderLine)) {
+            // set the owning side to null (unless already changed)
+            if ($orderLine->getRelatedOrder() === $this) {
+                $orderLine->setRelatedOrder(null);
+            }
+        }
 
         return $this;
     }

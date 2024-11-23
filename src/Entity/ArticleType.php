@@ -46,11 +46,39 @@ class ArticleType
     #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'articleType')]
     private Collection $restockingLines;
 
+    /**
+     * @var Collection<int, StockEvolution>
+     */
+    #[ORM\OneToMany(targetEntity: StockEvolution::class, mappedBy: 'articleType', orphanRemoval: true)]
+    private Collection $evolutions;
+
+    /**
+     * @var Collection<int, Article>
+     */
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'articleType', orphanRemoval: true)]
+    private Collection $articlesDetail;
+
+    /**
+     * @var Collection<int, KeyWord>
+     */
+    #[ORM\ManyToMany(targetEntity: KeyWord::class, inversedBy: 'articleTypes')]
+    private Collection $keyWords;
+
+    /**
+     * @var Collection<int, Category>
+     */
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articleTypes')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
         $this->cartLines = new ArrayCollection();
         $this->restockingLines = new ArrayCollection();
+        $this->evolutions = new ArrayCollection();
+        $this->articlesDetail = new ArrayCollection();
+        $this->keyWords = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,6 +220,114 @@ class ArticleType
                 $restockingLine->setArticleType(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StockEvolution>
+     */
+    public function getEvolutions(): Collection
+    {
+        return $this->evolutions;
+    }
+
+    public function addEvolution(StockEvolution $evolution): static
+    {
+        if (!$this->evolutions->contains($evolution)) {
+            $this->evolutions->add($evolution);
+            $evolution->setArticleType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvolution(StockEvolution $evolution): static
+    {
+        if ($this->evolutions->removeElement($evolution)) {
+            // set the owning side to null (unless already changed)
+            if ($evolution->getArticleType() === $this) {
+                $evolution->setArticleType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticlesDetail(): Collection
+    {
+        return $this->articlesDetail;
+    }
+
+    public function addArticlesDetail(Article $articlesDetail): static
+    {
+        if (!$this->articlesDetail->contains($articlesDetail)) {
+            $this->articlesDetail->add($articlesDetail);
+            $articlesDetail->setArticleType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticlesDetail(Article $articlesDetail): static
+    {
+        if ($this->articlesDetail->removeElement($articlesDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($articlesDetail->getArticleType() === $this) {
+                $articlesDetail->setArticleType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, KeyWord>
+     */
+    public function getKeyWords(): Collection
+    {
+        return $this->keyWords;
+    }
+
+    public function addKeyWord(KeyWord $keyWord): static
+    {
+        if (!$this->keyWords->contains($keyWord)) {
+            $this->keyWords->add($keyWord);
+        }
+
+        return $this;
+    }
+
+    public function removeKeyWord(KeyWord $keyWord): static
+    {
+        $this->keyWords->removeElement($keyWord);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

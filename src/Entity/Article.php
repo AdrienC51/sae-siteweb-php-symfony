@@ -20,6 +20,10 @@ class Article
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $expirationDate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'articlesDetail')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ArticleType $articleType = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +49,18 @@ class Article
     public function setExpirationDate(\DateTimeInterface $expirationDate): static
     {
         $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    public function getArticleType(): ?ArticleType
+    {
+        return $this->articleType;
+    }
+
+    public function setArticleType(?ArticleType $articleType): static
+    {
+        $this->articleType = $articleType;
 
         return $this;
     }

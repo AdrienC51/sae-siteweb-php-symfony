@@ -23,6 +23,10 @@ class StockEvolution
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $evolutionDate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'evolutions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ArticleType $articleType = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +64,18 @@ class StockEvolution
     public function setEvolutionDate(\DateTimeInterface $evolutionDate): static
     {
         $this->evolutionDate = $evolutionDate;
+
+        return $this;
+    }
+
+    public function getArticleType(): ?ArticleType
+    {
+        return $this->articleType;
+    }
+
+    public function setArticleType(?ArticleType $articleType): static
+    {
+        $this->articleType = $articleType;
 
         return $this;
     }

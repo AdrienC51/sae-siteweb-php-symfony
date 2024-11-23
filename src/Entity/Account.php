@@ -40,6 +40,9 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'account', cascade: ['persist', 'remove'])]
     private ?Admin $admin = null;
 
+    #[ORM\OneToOne(mappedBy: 'account', cascade: ['persist', 'remove'])]
+    private ?Client $client = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,23 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->admin = $admin;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(Client $client): static
+    {
+        // set the owning side of the relation if necessary
+        if ($client->getAccount() !== $this) {
+            $client->setAccount($this);
+        }
+
+        $this->client = $client;
 
         return $this;
     }

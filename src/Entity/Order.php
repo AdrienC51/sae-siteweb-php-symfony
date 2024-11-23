@@ -28,7 +28,11 @@ class Order
     private ?string $destCity = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $status = null; //Value = "Accepted", "In preparation", "Being delivered", "Delivered"
+    private ?string $status = null;
+
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Client $client = null; //Value = "Accepted", "In preparation", "Being delivered", "Delivered"
 
     public function getId(): ?int
     {
@@ -91,6 +95,18 @@ class Order
     public function setStatus(string $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): static
+    {
+        $this->client = $client;
 
         return $this;
     }

@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\RefillRepository;
+use App\Repository\RestockingLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: RefillRepository::class)]
-class Refill
+#[ORM\Entity(repositoryClass: RestockingLineRepository::class)]
+class RestockingLine
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

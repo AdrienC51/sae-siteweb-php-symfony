@@ -78,6 +78,7 @@
         "fix:phpcs": "php-cs-fixer fix",
         "test:twigcs": "twig-cs-fixer fix --dry-run",
         "fix:twigcs": "twig-cs-fixer fix",
+        "test":["@test:phpcs","@test:twigcs"],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",

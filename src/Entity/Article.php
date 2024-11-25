@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleTypeRepository;
+use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ArticleTypeRepository::class)]
-class ArticleType
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
+class Article
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,43 +31,43 @@ class ArticleType
     /**
      * @var Collection<int, OrderLine>
      */
-    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'articleType')]
+    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'article')]
     private Collection $orderLines;
 
     /**
      * @var Collection<int, CartLine>
      */
-    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'articleType', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'article', orphanRemoval: true)]
     private Collection $cartLines;
 
     /**
      * @var Collection<int, RestockingLine>
      */
-    #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'articleType')]
+    #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'article')]
     private Collection $restockingLines;
 
     /**
      * @var Collection<int, StockEvolution>
      */
-    #[ORM\OneToMany(targetEntity: StockEvolution::class, mappedBy: 'articleType', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: StockEvolution::class, mappedBy: 'article', orphanRemoval: true)]
     private Collection $evolutions;
 
     /**
      * @var Collection<int, Article>
      */
-    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'articleType', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Unit::class, mappedBy: 'article', orphanRemoval: true)]
     private Collection $articlesDetail;
 
     /**
      * @var Collection<int, KeyWord>
      */
-    #[ORM\ManyToMany(targetEntity: KeyWord::class, inversedBy: 'articleTypes')]
+    #[ORM\ManyToMany(targetEntity: KeyWord::class, inversedBy: 'articles')]
     private Collection $keyWords;
 
     /**
      * @var Collection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articleTypes')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articles')]
     private Collection $categories;
 
     public function __construct()
@@ -186,8 +186,8 @@ class ArticleType
     {
         if ($this->cartLines->removeElement($cartLine)) {
             // set the owning side to null (unless already changed)
-            if ($cartLine->getArticleType() === $this) {
-                $cartLine->setArticleType(null);
+            if ($cartLine->getArticle() === $this) {
+                $cartLine->setArticle(null);
             }
         }
 
@@ -206,7 +206,7 @@ class ArticleType
     {
         if (!$this->restockingLines->contains($restockingLine)) {
             $this->restockingLines->add($restockingLine);
-            $restockingLine->setArticleType($this);
+            $restockingLine->setArticle($this);
         }
 
         return $this;
@@ -216,8 +216,8 @@ class ArticleType
     {
         if ($this->restockingLines->removeElement($restockingLine)) {
             // set the owning side to null (unless already changed)
-            if ($restockingLine->getArticleType() === $this) {
-                $restockingLine->setArticleType(null);
+            if ($restockingLine->getArticle() === $this) {
+                $restockingLine->setArticle(null);
             }
         }
 
@@ -236,7 +236,7 @@ class ArticleType
     {
         if (!$this->evolutions->contains($evolution)) {
             $this->evolutions->add($evolution);
-            $evolution->setArticleType($this);
+            $evolution->setArticle($this);
         }
 
         return $this;
@@ -246,8 +246,8 @@ class ArticleType
     {
         if ($this->evolutions->removeElement($evolution)) {
             // set the owning side to null (unless already changed)
-            if ($evolution->getArticleType() === $this) {
-                $evolution->setArticleType(null);
+            if ($evolution->getArticle() === $this) {
+                $evolution->setArticle(null);
             }
         }
 
@@ -266,7 +266,7 @@ class ArticleType
     {
         if (!$this->articlesDetail->contains($articlesDetail)) {
             $this->articlesDetail->add($articlesDetail);
-            $articlesDetail->setArticleType($this);
+            $articlesDetail->setArticle($this);
         }
 
         return $this;
@@ -276,8 +276,8 @@ class ArticleType
     {
         if ($this->articlesDetail->removeElement($articlesDetail)) {
             // set the owning side to null (unless already changed)
-            if ($articlesDetail->getArticleType() === $this) {
-                $articlesDetail->setArticleType(null);
+            if ($articlesDetail->getArticle() === $this) {
+                $articlesDetail->setArticle(null);
             }
         }
 

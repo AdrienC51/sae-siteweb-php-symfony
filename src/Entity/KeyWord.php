@@ -19,14 +19,14 @@ class KeyWord
     private ?string $word = null;
 
     /**
-     * @var Collection<int, ArticleType>
+     * @var Collection<int, Article>
      */
-    #[ORM\ManyToMany(targetEntity: ArticleType::class, mappedBy: 'keyWords')]
-    private Collection $articleTypes;
+    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'keyWords')]
+    private Collection $articles;
 
     public function __construct()
     {
-        $this->articleTypes = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,27 +47,27 @@ class KeyWord
     }
 
     /**
-     * @return Collection<int, ArticleType>
+     * @return Collection<int, Article>
      */
-    public function getArticleTypes(): Collection
+    public function getArticles(): Collection
     {
-        return $this->articleTypes;
+        return $this->articles;
     }
 
-    public function addArticleType(ArticleType $articleType): static
+    public function addArticle(Article $article): static
     {
-        if (!$this->articleTypes->contains($articleType)) {
-            $this->articleTypes->add($articleType);
-            $articleType->addKeyWord($this);
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->addKeyWord($this);
         }
 
         return $this;
     }
 
-    public function removeArticleType(ArticleType $articleType): static
+    public function removeArticle(Article $article): static
     {
-        if ($this->articleTypes->removeElement($articleType)) {
-            $articleType->removeKeyWord($this);
+        if ($this->articles->removeElement($article)) {
+            $article->removeKeyWord($this);
         }
 
         return $this;

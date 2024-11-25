@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Article;
+use App\Entity\Unit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Article>
  */
-class ArticleRepository extends ServiceEntityRepository
+class UnitRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Article::class);
+        parent::__construct($registry, Unit::class);
     }
 
     //    /**
-    //     * @return Article[] Returns an array of Article objects
+    //     * @return Unit[] Returns an array of Unit objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class ArticleRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Article
+    //    public function findOneBySomeField($value): ?Unit
     //    {
     //        return $this->createQueryBuilder('a')
     //            ->andWhere('a.exampleField = :val')

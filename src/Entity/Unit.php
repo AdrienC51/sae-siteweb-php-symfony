@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
-class Article
+class Unit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,7 +22,7 @@ class Article
 
     #[ORM\ManyToOne(inversedBy: 'articlesDetail')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ArticleType $articleType = null;
+    private ?Article $article = null;
 
     public function getId(): ?int
     {
@@ -53,14 +53,14 @@ class Article
         return $this;
     }
 
-    public function getArticleType(): ?ArticleType
+    public function getArticle(): ?Article
     {
-        return $this->articleType;
+        return $this->article;
     }
 
-    public function setArticleType(?ArticleType $articleType): static
+    public function setArticle(?Article $article): static
     {
-        $this->articleType = $articleType;
+        $this->article = $article;
 
         return $this;
     }

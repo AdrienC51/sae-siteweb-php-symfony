@@ -25,7 +25,7 @@ class StockEvolution
 
     #[ORM\ManyToOne(inversedBy: 'evolutions')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ArticleType $articleType = null;
+    private ?Article $article = null;
 
     public function getId(): ?int
     {
@@ -68,14 +68,14 @@ class StockEvolution
         return $this;
     }
 
-    public function getArticleType(): ?ArticleType
+    public function getArticle(): ?Article
     {
-        return $this->articleType;
+        return $this->article;
     }
 
-    public function setArticleType(?ArticleType $articleType): static
+    public function setArticle(?Article $article): static
     {
-        $this->articleType = $articleType;
+        $this->article = $article;
 
         return $this;
     }

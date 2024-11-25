@@ -146,7 +146,7 @@ class Article
     {
         if (!$this->orderLines->contains($orderLine)) {
             $this->orderLines->add($orderLine);
-            $orderLine->setArticleType($this);
+            $orderLine->setArticle($this);
         }
 
         return $this;
@@ -156,8 +156,8 @@ class Article
     {
         if ($this->orderLines->removeElement($orderLine)) {
             // set the owning side to null (unless already changed)
-            if ($orderLine->getArticleType() === $this) {
-                $orderLine->setArticleType(null);
+            if ($orderLine->getArticle() === $this) {
+                $orderLine->setArticle(null);
             }
         }
 
@@ -176,7 +176,7 @@ class Article
     {
         if (!$this->cartLines->contains($cartLine)) {
             $this->cartLines->add($cartLine);
-            $cartLine->setArticleType($this);
+            $cartLine->setArticle($this);
         }
 
         return $this;

@@ -262,7 +262,7 @@ class Article
         return $this->articlesDetail;
     }
 
-    public function addArticlesDetail(Article $articlesDetail): static
+    public function addArticlesDetail(Unit $articlesDetail): static
     {
         if (!$this->articlesDetail->contains($articlesDetail)) {
             $this->articlesDetail->add($articlesDetail);
@@ -272,7 +272,7 @@ class Article
         return $this;
     }
 
-    public function removeArticlesDetail(Article $articlesDetail): static
+    public function removeArticlesDetail(Unit $articlesDetail): static
     {
         if ($this->articlesDetail->removeElement($articlesDetail)) {
             // set the owning side to null (unless already changed)

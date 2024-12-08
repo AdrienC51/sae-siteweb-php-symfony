@@ -48,7 +48,7 @@ class Order
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
-    } //Value = "Accepted", "In preparation", "Being delivered", "Delivered"
+    } // Value = "Accepted", "In preparation", "Being delivered", "Delivered"
 
     public function getId(): ?int
     {

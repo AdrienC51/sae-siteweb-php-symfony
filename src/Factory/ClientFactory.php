@@ -15,6 +15,7 @@ final class ClientFactory extends PersistentProxyObjectFactory
      *
      * @todo inject services if required
      */
+
     public function __construct()
     {
     }
@@ -32,7 +33,11 @@ final class ClientFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'account' => null, // TODO add App\Entity\Account type manually
+            'account' => AccountFactory::random(),
+            'city'=>self::faker()->city(),
+            'post_code' => self::faker()->postcode,
+            'address' => self::faker()->streetAddress,
+            'phone' => self::faker()->phoneNumber(),
         ];
     }
 

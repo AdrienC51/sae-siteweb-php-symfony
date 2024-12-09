@@ -15,8 +15,10 @@ final class AccountFactory extends PersistentProxyObjectFactory
      *
      * @todo inject services if required
      */
+    private \Transliterator $transliterator;
     public function __construct()
     {
+        $this->transliterator = \Transliterator::create('Any-Latin; Latin-ASCII; Lower()');
     }
 
     public static function class(): string
@@ -31,13 +33,26 @@ final class AccountFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
+        $firstName = self::faker()->firstName();
+        $lastName = self::faker()->lastName();
+        $domainName = self::faker()->domainName();
+        $email = $this->normalizeName($firstName.'.'.$lastName).'@'.$domainName;
+        $phoneNumber = self::faker()->phoneNumber();
+
         return [
-            'email' => self::faker()->text(180),
-            'firstname' => self::faker()->text(100),
-            'lastname' => self::faker()->text(100),
-            'password' => self::faker()->text(),
+            'email' => $email,
+            'firstname' => $firstName,
+            'lastname' => $lastName,
+            'password' => 'test',
             'roles' => [],
         ];
+    }
+    protected function normalizeName(string $name)
+    {
+        $name = $this->transliterator->transliterate($name);
+        $name = preg_replace('/[^a-z0-9.]/', '-', $name);
+
+        return $name;
     }
 
     /**

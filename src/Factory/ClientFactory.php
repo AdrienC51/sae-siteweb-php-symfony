@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\Entity\Account;
 use App\Entity\Client;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
@@ -33,9 +34,9 @@ final class ClientFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'account' => AccountFactory::random(),
+            'account' => AccountFactory::createOne(),
             'city'=>self::faker()->city(),
-            'post_code' => self::faker()->postcode,
+            'post_code' => (string) self::faker()->postcode(),
             'address' => self::faker()->streetAddress,
             'phone' => self::faker()->phoneNumber(),
         ];

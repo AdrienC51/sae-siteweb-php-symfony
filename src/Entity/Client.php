@@ -6,6 +6,7 @@ use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 class Client
@@ -18,13 +19,13 @@ class Client
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 5, nullable: true)]
+    #[ORM\Column(length: 15, nullable: true)]
     private ?string $postCode = null;
 
     #[ORM\Column(length: 128, nullable: true)]
     private ?string $city = null;
 
-    #[ORM\Column(length: 15, nullable: true)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $phone = null;
 
     #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]

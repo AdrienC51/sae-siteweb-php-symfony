@@ -31,9 +31,7 @@ final class CategoryFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
-        return [
-            'name' => self::faker()->text(128),
-        ];
+        return [];
     }
 
     /**

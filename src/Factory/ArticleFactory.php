@@ -31,9 +31,25 @@ final class ArticleFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
+        $pharmaNames = [
+            'Paracetamol ',
+            'Ibuprofen ',
+            'Vitamin C ',
+            'Aspirin ',
+            'Amoxicillin ',
+            'Cetirizine ',
+            'Omeprazole ',
+            'Metformin ',
+            'Saline Nasal Spray ',
+            'Antihistamine Tablets ',
+        ];
+        $number=rand(100,500);
+        $name=self::faker()->randomElement($pharmaNames).$number."mg";
         return [
-            'name' => self::faker()->text(128),
-            'price' => self::faker()->randomFloat(),
+            'name' => $name,
+            'price' => self::faker()->randomFloat(2, 5, 100),
+            'description' => self::faker()->sentence(10),
+            'picture' => self::faker()->imageUrl(640, 480, 'health', true, 'Pharma Product'),
         ];
     }
 

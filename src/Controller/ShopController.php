@@ -11,10 +11,9 @@ class ShopController extends AbstractController
     #[Route('/shop', name: 'app_shop')]
     public function index(): Response
     {
-        return $this->render('shop/show.html.twig');
+        return $this->render('shop/index.html.twig');
     }
-
-    #[Route('/shop/cart', name: 'app_shop')]
+    #[Route('/shop/cart', name: 'app_shop_cart')]
     public function show(): Response
     {
         return $this->render('shop/show.html.twig');

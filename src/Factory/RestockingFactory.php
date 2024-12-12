@@ -32,7 +32,7 @@ final class RestockingFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'status' => self::faker()->text(20),
+            'restock_date' => self::faker()->dateTimeBetween('-30 days',"+30 days"),
         ];
     }
 

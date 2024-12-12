@@ -32,6 +32,7 @@ final class CartFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
+            'client' => ClientFactory::random()
         ];
     }
 

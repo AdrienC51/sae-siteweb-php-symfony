@@ -23,7 +23,7 @@ class Order
     #[ORM\Column(length: 200)]
     private ?string $destAddress = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 15)]
     private ?string $destPostCode = null;
 
     #[ORM\Column(length: 128)]

@@ -38,9 +38,6 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastname = null;
 
     #[ORM\OneToOne(mappedBy: 'account', cascade: ['persist', 'remove'])]
-    private ?Admin $admin = null;
-
-    #[ORM\OneToOne(mappedBy: 'account', cascade: ['persist', 'remove'])]
     private ?Client $client = null;
 
     public function getId(): ?int

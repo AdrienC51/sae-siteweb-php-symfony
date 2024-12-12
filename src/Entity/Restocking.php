@@ -22,9 +22,6 @@ class Restocking
     #[ORM\Column(length: 20)]
     private ?string $status = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Restockings')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $admin = null;
 
     /**
      * @var Collection<int, RestockingLine>

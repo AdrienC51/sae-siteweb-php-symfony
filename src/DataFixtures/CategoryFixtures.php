@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\ArticleFactory;
 use App\Factory\CategoryFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -23,6 +24,5 @@ class CategoryFixtures extends Fixture
     ['name' => 'Sedatives'],        // Sleep aids
     ];
     CategoryFactory::createSequence($pharmaCategories);
-
     }
 }

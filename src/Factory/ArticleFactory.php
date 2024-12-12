@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\DataFixtures\CategoryFixtures;
 use App\Entity\Article;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
@@ -50,6 +51,7 @@ final class ArticleFactory extends PersistentProxyObjectFactory
             'price' => self::faker()->randomFloat(2, 5, 100),
             'description' => self::faker()->sentence(10),
             'picture' => self::faker()->imageUrl(640, 480, 'health', true, 'Pharma Product'),
+            'categories'=> [CategoryFactory::random()]
         ];
     }
 

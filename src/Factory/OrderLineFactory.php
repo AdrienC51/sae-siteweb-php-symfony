@@ -32,9 +32,8 @@ final class OrderLineFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'article' => ArticleFactory::new(),
-            'quantity' => self::faker()->randomNumber(),
-            'relatedOrder' => OrderFactory::new(),
+            'article' => ArticleFactory::random(),
+            'quantity' => rand(1,15),
         ];
     }
 

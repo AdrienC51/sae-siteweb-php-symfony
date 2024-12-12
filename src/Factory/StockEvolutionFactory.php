@@ -32,10 +32,9 @@ final class StockEvolutionFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'article' => ArticleFactory::new(),
-            'evolutionDate' => self::faker()->dateTime(),
-            'quantity' => self::faker()->randomNumber(),
-            'type' => self::faker()->text(3),
+            'article' => ArticleFactory::random(),
+            'evolutionDate' => self::faker()->dateTimeBetween("-1 year","+5 year"),
+            'quantity' => rand(20,150),
         ];
     }
 

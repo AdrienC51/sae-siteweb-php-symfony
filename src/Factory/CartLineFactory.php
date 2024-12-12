@@ -32,9 +32,9 @@ final class CartLineFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            'article' => ArticleFactory::new(),
-            'cart' => CartFactory::new(),
-            'quantity' => self::faker()->randomNumber(),
+            'article' => ArticleFactory::random(),
+            'cart' => CartFactory::random(),
+            'quantity' => rand(1,10),
         ];
     }
 

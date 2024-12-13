@@ -4,6 +4,14 @@
 
 {% block stylesheets %}
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            margin: 10px;
+        }
         div.articles {
             display:flex;
             flex-wrap:wrap;
@@ -15,7 +23,7 @@
         div.article {
             width: 30%;
             margin-bottom: 10px;
-            border: 1px lightgray solid;
+            border: 1px gray solid;
             border-radius: 5px;
         }
         div.article_info {

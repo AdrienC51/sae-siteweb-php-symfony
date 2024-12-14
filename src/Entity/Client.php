@@ -32,14 +32,15 @@ class Client
     #[ORM\JoinColumn(nullable: false)]
     private ?Account $account = null;
 
-    #[ORM\OneToOne(inversedBy: 'client', cascade: ['persist', 'remove'])]
-    private ?Cart $cart = null;
 
     /**
      * @var Collection<int, Order>
      */
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'client')]
     private Collection $orders;
+
+    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'client', orphanRemoval: true)]
+    private Collection $cartLines;
 
     public function __construct()
     {

@@ -16,7 +16,7 @@ class CartLineFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(){
         return [
             ArticleFixtures::class,
-            CartFixtures::class,
+            ClientFixtures::class
         ];
     }
 }

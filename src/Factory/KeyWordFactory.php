@@ -31,9 +31,9 @@ final class KeyWordFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
-        return [
-            'word' => self::faker()->text(128),
-        ];
+
+
+        return [];
     }
 
     /**

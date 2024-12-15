@@ -48,3 +48,7 @@ We run the command to check the code with twig cs fix `composer test:twigcs`
 We run the command to correct the code with php cs fix `composer fix:phpcs`
 
 We run the command to correct the code with twig cs fix `composer fix:twigcs`
+
+# Database
+
+Create your .env.local file and connect to your database then run `composer db` to create the database and create ficticious data

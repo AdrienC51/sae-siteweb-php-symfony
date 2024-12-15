@@ -18,11 +18,11 @@ class CartLine
 
     #[ORM\ManyToOne(inversedBy: 'cartLines')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Cart $cart = null;
+    private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'cartLines')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Article $article = null;
+    private ?Client $client = null;
 
     public function getId(): ?int
     {
@@ -64,4 +64,16 @@ class CartLine
 
         return $this;
     }
+     public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): static
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
 }

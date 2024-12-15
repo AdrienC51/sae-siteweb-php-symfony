@@ -16,7 +16,7 @@ class KeyWord
     private ?int $id = null;
 
     #[ORM\Column(length: 128)]
-    private ?string $word = null;
+    private ?string $word = null; // A word like the flu, to search for all related medicines
 
     /**
      * @var Collection<int, Article>

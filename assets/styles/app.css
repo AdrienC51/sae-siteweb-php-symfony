@@ -41,3 +41,20 @@ body {
 .toggle {
     cursor: pointer;
 }
+.box {
+    border: 15px solid #23bf5d;
+    border-bottom: 5px solid #23bf5d;
+    border-top: 5px solid #23bf5d;
+    border-radius: 10px;
+    background-color: #23bf5d;
+}
+.box_info {
+    color: darkslategrey;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.box_title {
+    display: flex;
+    justify-content: center;
+}

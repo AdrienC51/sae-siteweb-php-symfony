@@ -9,7 +9,7 @@ body {
 /* Home page */
 .line-text {
     display: inline-block;
-    background-color: #aacd4e;
+    background-color: #e1dd72;
     margin-bottom: 5px;
     margin-top: 5px;
     padding: 5px 10px;
@@ -42,11 +42,11 @@ body {
     cursor: pointer;
 }
 .box {
-    border: 15px solid #23bf5d;
-    border-bottom: 5px solid #23bf5d;
-    border-top: 5px solid #23bf5d;
+    border: 15px solid #e1dd72;
+    border-bottom: 5px solid #e1dd72;
+    border-top: 5px solid #e1dd72;
     border-radius: 10px;
-    background-color: #23bf5d;
+    background-color: #e1dd72;
 }
 .box_info {
     color: darkslategrey;

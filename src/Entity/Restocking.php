@@ -32,7 +32,7 @@ class Restocking
     public function __construct()
     {
         $this->restockingLines = new ArrayCollection();
-    } //Value = "Pending", "Received"
+    } // Value = "Pending", "Received"
 
     public function getId(): ?int
     {

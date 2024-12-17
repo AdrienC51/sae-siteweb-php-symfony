@@ -18,7 +18,7 @@ class StockEvolution
     private ?int $quantity = null;
 
     #[ORM\Column(length: 3)]
-    private ?string $type = null; //Value = "IN" or "OUT"
+    private ?string $type = null; // Value = "IN" or "OUT"
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $evolutionDate = null;

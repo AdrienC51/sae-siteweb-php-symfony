@@ -8,12 +8,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/')] //Default route
+    #[Route('/')] // Default route
     public function index(): Response
     {
-         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/home', name: 'app_home')] //Home page route
+
+    #[Route('/home', name: 'app_home')] // Home page route
     public function show(): Response
     {
         return $this->render('home/index.html.twig');

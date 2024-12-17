@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement sécurisé par carte{% endblock %}
+{% block title %}Secure Card Payment{% endblock %}
 
 {% block body %}
     <div class="payment-container">
-        <h2>Paiement sécurisé par carte</h2>
+        <h2>Secure Card Payment</h2>
 
         <form method="POST" action="{{ path('app_purchase') }}">
             <div class="form-group">
-                <label for="cardNumber">Numéro de carte</label>
+                <label for="cardNumber">Card Number</label>
                 <input type="text" id="cardNumber" name="cardNumber" placeholder="____ ____ ____ ____" required>
             </div>
 
             <div class="form-group">
-                <label for="expiryDate">Date d'expiration</label>
+                <label for="expiryDate">Expiration Date</label>
                 <input type="text" id="expiryDate" name="expiryDate" placeholder="MM / YY" required>
             </div>
 
@@ -23,23 +23,22 @@
             </div>
 
             <div class="form-group">
-                <label for="cardHolder">Titulaire de la carte</label>
-                <input type="text" id="cardHolder" name="cardHolder" placeholder="Titulaire de la carte" required>
-                <p class="error">Veuillez saisir un titulaire de la carte valide, ce champ doit être complété.</p>
+                <label for="cardHolder">Cardholder Name</label>
+                <input type="text" id="cardHolder" name="cardHolder" placeholder="Cardholder Name" required>
+                <p class="error">Please enter a valid cardholder name, this field is required.</p>
             </div>
 
             <div class="form-group">
-                <label>Enregistrer ma carte pour mes prochains achats</label>
+                <label>Save my card for future purchases</label>
                 <div class="radio-group">
                     <input type="radio" id="saveCardYes" name="saveCard" value="yes">
-                    <label for="saveCardYes">Oui</label>
+                    <label for="saveCardYes">Yes</label>
                     <input type="radio" id="saveCardNo" name="saveCard" value="no" checked>
-                    <label for="saveCardNo">Non</label>
+                    <label for="saveCardNo">No</label>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Valider et payer la commande</button>
-        </form>
 
+        </form>
     </div>
 {% endblock %}

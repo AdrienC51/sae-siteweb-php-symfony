@@ -11,7 +11,7 @@ class StockController extends AbstractController
     #[Route('/stock', name: 'app_stock')]
     public function index(): Response
     {
-        return $this->render('stock/index.html.twig', [
+        return $this->render('stock/show.html.twig', [
             'controller_name' => 'StockController',
         ]);
     }

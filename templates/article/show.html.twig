@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <div class="line-text">
+        <ul>
+            {{ article.name }}
+        </ul>
+    </div>
+    <div class="line-text">
+        <ul>
+            {{ article.price }}
+        </ul>
+    </div>
+    <div class="line-text">
+        <ul>
+            {{ article.description }}
+        </ul>
+    </div>
+    <ul>
+        {{ article.picture }}
+    </ul>
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Unit;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -30,6 +31,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('CRUD Category', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('CRUD Unit', 'fas fa-list', Unit::class);
+        yield MenuItem::linkToCrud('CRUD Article', 'fas fa-list', Article::class);
+
 
     }
 }

@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PurchaseController!{% endblock %}
+{% block title %}Paiement sécurisé par carte{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+    <div class="payment-container">
+        <h2>Paiement sécurisé par carte</h2>
 
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
+        <form method="POST" action="{{ path('app_payment_process') }}">
+            <div class="form-group">
+                <label for="cardNumber">Numéro de carte</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="____ ____ ____ ____" required>
+            </div>
 
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code>C:/Users/pc/Documents/Cours/S3/sae3-01/src/Controller/PurchaseController.php</code></li>
-            <li>Your template at <code>C:/Users/pc/Documents/Cours/S3/sae3-01/templates/purchase/index.html.twig</code></li>
-        </ul>
+            <div class="form-group">
+                <label for="expiryDate">Date d'expiration</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM / YY" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="---" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cardHolder">Titulaire de la carte</label>
+                <input type="text" id="cardHolder" name="cardHolder" placeholder="Titulaire de la carte" required>
+                <p class="error">Veuillez saisir un titulaire de la carte valide, ce champ doit être complété.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Enregistrer ma carte pour mes prochains achats</label>
+                <div class="radio-group">
+                    <input type="radio" id="saveCardYes" name="saveCard" value="yes">
+                    <label for="saveCardYes">Oui</label>
+                    <input type="radio" id="saveCardNo" name="saveCard" value="no" checked>
+                    <label for="saveCardNo">Non</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Valider et payer la commande</button>
+        </form>
+
+        <a href="#" class="link">Changer de mode de paiement</a>
     </div>
 {% endblock %}

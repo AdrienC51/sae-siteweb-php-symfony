@@ -6,7 +6,7 @@
     <div class="payment-container">
         <h2>Paiement sécurisé par carte</h2>
 
-        <form method="POST" action="{{ path('app_payment_process') }}">
+        <form method="POST" action="{{ path('app_purchase') }}">
             <div class="form-group">
                 <label for="cardNumber">Numéro de carte</label>
                 <input type="text" id="cardNumber" name="cardNumber" placeholder="____ ____ ____ ____" required>

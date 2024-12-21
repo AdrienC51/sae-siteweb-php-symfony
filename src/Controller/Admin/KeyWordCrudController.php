@@ -55,17 +55,27 @@ class KeyWordCrudController extends AbstractCrudController
 
     public function setUpdateArticles(KeyWord $keyWord): void
     {
-        $articlesId = $this->getContext()->getRequest()->get('KeyWord')['articles'];
-
         $allArticles = $this->articleRepository->findAll();
-        foreach ($allArticles as $article) {
-            if((array)$article->getKeyWords()->contains($keyWord)) {
-                if (!in_array($article->getId(), $articlesId)) {
+
+        if (isset($this->getContext()->getRequest()->get("KeyWord")['articles'])) {
+            $articlesId = $this->getContext()->getRequest()->get('KeyWord')['articles'];
+
+            foreach ($allArticles as $article) {
+                if ($article->getKeyWords()->contains($keyWord)) {
+                    if (!in_array($article->getId(), $articlesId)) {
+                        $article->removeKeyWord($keyWord);
+                    }
+                } elseif (in_array($article->getId(), $articlesId)) {
+                    $article->addKeyWord($keyWord);
+                }
+            }
+        } else {
+            foreach ($allArticles as $article) {
+                if ($article->getKeyWords()->contains($keyWord)) {
                     $article->removeKeyWord($keyWord);
                 }
-            } elseif(in_array($article->getId(), $articlesId)) {
-                $article->addKeyWord($keyWord);
             }
+
         }
     }
 }

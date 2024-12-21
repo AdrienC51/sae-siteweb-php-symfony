@@ -22,7 +22,7 @@ class UnitCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             DateField::new('entryDate'),
             DateField::new('expirationDate'),
-            AssociationField::new('article')->setFormTypeOptions(['choice_label' => 'name', 'query_builder' => function (EntityRepository $entityRepository) {
+            AssociationField::new('article')->setFormTypeOptions(['disabled'=> true, 'choice_label' => 'name', 'query_builder' => function (EntityRepository $entityRepository) {
                 return $entityRepository->createQueryBuilder('a')
                     ->orderBy('a.name', 'ASC');
             }])->formatValue(function ($value) {

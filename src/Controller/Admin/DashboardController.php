@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\KeyWord;
+use App\Entity\StockEvolution;
 use App\Entity\Unit;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -34,6 +35,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Unit', 'fas fa-list', Unit::class);
         yield MenuItem::linkToCrud('CRUD Article', 'fas fa-list', Article::class);
         yield MenuItem::linkToCrud('CRUD Key Word', 'fas fa-list', KeyWord::class);
+        yield MenuItem::linkToCrud('CRUD Stock Evolution', 'fas fa-list', StockEvolution::class);
+
 
 
 

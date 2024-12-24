@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Account;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\KeyWord;
@@ -36,6 +37,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Article', 'fas fa-list', Article::class);
         yield MenuItem::linkToCrud('CRUD Key Word', 'fas fa-list', KeyWord::class);
         yield MenuItem::linkToCrud('CRUD Stock Evolution', 'fas fa-list', StockEvolution::class);
+        yield MenuItem::linkToCrud('CRUD Account', 'fas fa-list', Account::class);
+
 
 
 

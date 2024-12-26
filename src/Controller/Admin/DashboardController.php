@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\KeyWord;
 use App\Entity\StockEvolution;
 use App\Entity\Unit;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -39,9 +40,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Stock Evolution', 'fas fa-list', StockEvolution::class);
         yield MenuItem::linkToCrud('CRUD Account', 'fas fa-list', Account::class);
 
+    }
 
-
-
-
+    public function configureAssets(): Assets
+    {
+        $assets = parent::configureAssets();
+        $assets->addCssFile('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+        return $assets;
     }
 }

@@ -3,7 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Account;
+use App\Entity\CartLine;
 use App\Entity\Client;
+use App\Entity\Order;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -29,6 +32,12 @@ class ClientCrudController extends AbstractCrudController
             AssociationField::new('account')->setFormTypeOptions(['disabled'=>'true','choice_label'=>'email'])->formatValue(function (Account $value) {
                 return $value->getFirstName() . ' ' . $value->getLastName();
             }),
-        ];
+            AssociationField::new('orders')->setFormTypeOptions(['disabled'=>'true', 'choice_label' => function (Order $o): string {
+                return $o->getOrderDate()->format("d/m/Y");
+            }]),
+            AssociationField::new('cartLines')->setFormTypeOptions(['disabled'=>'true', 'choice_label' => function (CartLine $cl): string {
+                return $cl->getQuantity() . ' ' . $cl->getArticle()->getName();
+            }]),
+            ];
     }
 }

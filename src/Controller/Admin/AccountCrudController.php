@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Account;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -10,9 +11,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AccountCrudController extends AbstractCrudController
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Account::class;
@@ -50,4 +59,29 @@ person
 
         ];
     }
+
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        parent::updateEntity($entityManager, $entityInstance);
+
+        $this->setAccountPassword($entityInstance);
+        $entityManager->flush();
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->setAccountPassword($entityInstance);
+        parent::persistEntity($entityManager, $entityInstance);
+        $entityManager->flush();
+    }
+
+    public function setAccountPassword(Account $account): void
+    {
+        $password = $this->getContext()->getRequest()->get('Account')['password'];
+        if (null !== $password) {
+            $account->setPassword($this->passwordHasher->hashPassword($account, $password));
+        }
+    }
+
 }

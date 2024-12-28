@@ -55,8 +55,12 @@ class OrderCrudController extends AbstractCrudController
             }, 'query_builder' => function (EntityRepository $entityRepository) {
                 return $entityRepository->createQueryBuilder('d')
                     ->orderBy('d.deliveryDate', 'ASC');
-            }])->formatValue(function ($value): string {
-                return $value->getDeliveryDate()->format("d/m/Y");
+            }])->formatValue(function ($value) {
+                if ($value) {
+                    return $value->getDeliveryDate()->format("d/m/Y");
+                } else {
+                    return null;
+                }
             })->setSortProperty('deliveryDate'),
         ];
     }

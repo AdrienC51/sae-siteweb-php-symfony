@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Account;
 use App\Entity\Article;
+use App\Entity\CartLine;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\Delivery;
@@ -47,6 +48,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Order', 'fas fa-list', Order::class);
         yield MenuItem::linkToCrud('CRUD Delivery', 'fas fa-list', Delivery::class);
         yield MenuItem::linkToCrud('CRUD Order Lines', 'fas fa-list', OrderLine::class);
+        yield MenuItem::linkToCrud('CRUD Cart Lines', 'fas fa-list', CartLine::class);
+
 
 
 

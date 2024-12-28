@@ -33,7 +33,7 @@ class ClientCrudController extends AbstractCrudController
                 return $value->getFirstName() . ' ' . $value->getLastName();
             }),
             AssociationField::new('orders')->setFormTypeOptions(['disabled'=>'true', 'choice_label' => function (Order $o): string {
-                return $o->getOrderDate()->format("d/m/Y");
+                return $o->getId().'-'.$o->getOrderDate()->format("d/m/Y");
             }]),
             AssociationField::new('cartLines')->setFormTypeOptions(['disabled'=>'true', 'choice_label' => function (CartLine $cl): string {
                 return $cl->getQuantity() . ' ' . $cl->getArticle()->getName();

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Delivery;
+use App\Entity\Order;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -29,7 +30,9 @@ class DeliveryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             DateField::new('deliveryDate'),
-            AssociationField::new('orders')->setFormTypeOptions(['choice_label'=>'id'])
+            AssociationField::new('orders')->setFormTypeOptions(['choice_label'=> function (Order $order): string {
+                return $order->getId().'-'.$order->getOrderDate()->format('d/m/Y').'-'.$order->getClient()->getAccount()->getFirstName().' '.$order->getClient()->getAccount()->getLastName();
+            }])
         ];
     }
 

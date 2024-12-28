@@ -7,6 +7,7 @@ use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\KeyWord;
+use App\Entity\Order;
 use App\Entity\StockEvolution;
 use App\Entity\Unit;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -41,6 +42,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Stock Evolution', 'fas fa-list', StockEvolution::class);
         yield MenuItem::linkToCrud('CRUD Account', 'fas fa-list', Account::class);
         yield MenuItem::linkToCrud('CRUD Client', 'fas fa-list', Client::class);
+        yield MenuItem::linkToCrud('CRUD Order', 'fas fa-list', Order::class);
+
 
 
     }

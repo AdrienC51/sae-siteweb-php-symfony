@@ -62,6 +62,7 @@ body {
     height: 100%;
 }
 
+
 .informations, .orders {
     width: 100%;
     display: flex;
@@ -70,6 +71,12 @@ body {
     margin: 10px;
 }
 
+@media (max-width: 700px) {
+    .profilepage {
+        flex-direction: column;
+        padding-right: 10px;
+    }
+}
 
 .informations dt {
     font-size: 16px;

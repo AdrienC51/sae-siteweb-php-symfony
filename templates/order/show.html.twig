@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order n°{{ order.id }}{% endblock %}
+
+{% block body %}
+    <div class="box_title">
+        <h1>Order n°{{ order.id }}</h1>
+    </div>
+    <dl class="order">
+
+    </dl>
+    <div class="profilepage">
+        <dl class="informations">
+            <h2> Informations</h2>
+            <dt>Order Date</dt>
+            <dd>{{ order.orderDate|date('d/m/Y') }}</dd>
+            <dt>Price</dt>
+            <dd>{{ order.price }}€</dd>
+            <dt>Status</dt>
+            <dd>{{ order.status }}</dd>
+            <dt>Delivery Date</dt>
+            <dd>
+                {% if order.delivery.id is defined %}
+                    {{ order.delivery.deliveryDate|date('d/m/Y') }}
+                {% else %}
+                    No delivery scheduled
+                {% endif %}
+            </dd>
+            <dt>Client</dt>
+            <dd><a class="" href="{{ path('app_user_show', {id: order.client.account.id}) }}">{{ order.client.account.firstname }} {{ order.client.account.lastname }}</a></dd>
+            <dt>Address</dt>
+            <dd>{{ order.destAddress }}, {{ order.destCity }} {{ order.destPostCode }}</dd>
+
+        </dl>
+        <div class="separator"></div>
+        <div class="orders">
+            <h2>Products</h2>
+            <table class="line-table">
+                <tr>
+                    <th>Quantity</th>
+                    <th>Article</th>
+                    <th>Price</th>
+                </tr>
+            {% for orderLine in order.orderlines %}
+                <tr class="order-line">
+                    <td>{{orderLine.quantity }}</td>
+                    <td>{{ orderLine.article.name }}</td>
+                    <td>{{ orderLine.price }}€</td>
+                </tr>
+            {% endfor %}
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

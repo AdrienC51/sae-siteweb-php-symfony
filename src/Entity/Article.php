@@ -25,8 +25,8 @@ class Article
     #[ORM\Column(length: 300, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
-    private $picture;
+    #[ORM\Column( nullable: true)]
+    private ?string $picture;
 
     /**
      * @var Collection<int, OrderLine>

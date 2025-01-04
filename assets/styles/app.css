@@ -109,6 +109,24 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
+.line-table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+}
+
+.line-table td, .line-table th {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+
+}
+.line-table tr:first-of-type {
+    background-color: #1b6535;
+}
+.line-table tr:nth-of-type(even) {
+    background-color: #d6d6d6;
+}
+
 .checkbox-list {
     max-height: 200px;
     overflow-y: auto;

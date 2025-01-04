@@ -72,6 +72,13 @@ local_shipping
 </span>
                                 <p> {{ order.destaddress }},{{ order.destcity }} {{ order.destpostcode }} </p>
                                 </div>
+                                <div class="flex-row d-flex column-gap-1">
+                                <span class="material-symbols-outlined">
+paid
+</span>
+                                    <p> {{ order.price}} €</p>
+
+                                </div>
                             </div>
                     {% endfor %}
                 {% else %}
@@ -79,8 +86,11 @@ local_shipping
                         <h3>No order made yet</h3>
                     </div>
                 {% endif %}
-            {% else %}
-
+            {% elseif is_granted('ROLE_ADMIN')%}
+                <h2>Admin links</h2>
+                <a href="{{ path('app_home') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
+table_edit
+</span>Back-Office<span class="material-symbols-outlined">arrow_circle_right</span></a>
             {% endif %}
         </div>
     </div>

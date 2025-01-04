@@ -72,12 +72,35 @@ body {
 
 
 .informations dt {
+    font-size: 16px;
+    font-weight: bold;
     padding: 10px;
     background-color: #e1dd72;
 }
 .informations dd {
     padding-left: 10px;
     border: black solid 1px;
+}
+.orders {
+    row-gap: 10px;
+}
+
+.orderinfo {
+    border: black solid 1px;
+    padding-bottom: 10px;
+}
+
+.orderinfo * {
+    margin: 0;
+    padding: 0 10px 0 10px;
+}
+.orderinfo h3 {
+    background-color: #1b6535;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .checkbox-list {
     max-height: 200px;

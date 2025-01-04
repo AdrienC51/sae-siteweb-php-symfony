@@ -53,7 +53,35 @@
         </dl>
         <div class="separator"></div>
         <div class="orders">
+            {% if account.client.id is defined %}
+                <h2>Orders</h2>
+                {% if account.client.orders is not empty %}
+                    {% for order in account.client.orders %}
+                            <div class="orderinfo">
+                                <h3>Order n°{{ order.id }} ({{ order.status }})</h3>
+                                <div class="flex-row d-flex column-gap-1">
+                                <span class="material-symbols-outlined">
+event_available
+</span>
+                                <p> {{ order.orderdate|date('d/m/Y')}}</p>
+                                </div>
+                                <div class="flex-row d-flex column-gap-1">
 
+                                <span class="material-symbols-outlined">
+local_shipping
+</span>
+                                <p> {{ order.destaddress }},{{ order.destcity }} {{ order.destpostcode }} </p>
+                                </div>
+                            </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="orderinfo">
+                        <h3>No order made yet</h3>
+                    </div>
+                {% endif %}
+            {% else %}
+
+            {% endif %}
         </div>
     </div>
 

@@ -40,7 +40,6 @@
                             {% endfor %}
                         </ul>
                     </p>
-
                     <p>
                         <strong>Key Words:</strong>
                         <ul class="list-unstyled">
@@ -51,6 +50,11 @@
                             {% endfor %}
                         </ul>
                     </p>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ path('app_article_update', {'id': article.id}) }}" class="material-symbols-outlined text-warning">Edit</a>
+                        <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="material-symbols-outlined text-danger">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -31,43 +31,43 @@ class Article
     /**
      * @var Collection<int, OrderLine>
      */
-    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'article')]
+    #[ORM\OneToMany(targetEntity: OrderLine::class, mappedBy: 'article', cascade: ['remove'])]
     private Collection $orderLines;
 
     /**
      * @var Collection<int, CartLine>
      */
-    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'article', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: CartLine::class, mappedBy: 'article', orphanRemoval: true, cascade: ['remove'])]
     private Collection $cartLines;
 
     /**
      * @var Collection<int, RestockingLine>
      */
-    #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'article')]
+    #[ORM\OneToMany(targetEntity: RestockingLine::class, mappedBy: 'article', cascade: ['remove'])]
     private Collection $restockingLines;
 
     /**
      * @var Collection<int, StockEvolution>
      */
-    #[ORM\OneToMany(targetEntity: StockEvolution::class, mappedBy: 'article', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: StockEvolution::class, mappedBy: 'article', orphanRemoval: true, cascade: ['remove'])]
     private Collection $evolutions;
 
     /**
      * @var Collection<int, Article>
      */
-    #[ORM\OneToMany(targetEntity: Unit::class, mappedBy: 'article', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Unit::class, mappedBy: 'article', orphanRemoval: true, cascade: ['remove'])]
     private Collection $articlesDetail;
 
     /**
      * @var Collection<int, KeyWord>
      */
-    #[ORM\ManyToMany(targetEntity: KeyWord::class, inversedBy: 'articles')]
+    #[ORM\ManyToMany(targetEntity: KeyWord::class, inversedBy: 'articles', cascade: ['remove'])]
     private Collection $keyWords;
 
     /**
      * @var Collection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articles')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'articles', cascade: ['remove'])]
     private Collection $categories;
 
     public function __construct()

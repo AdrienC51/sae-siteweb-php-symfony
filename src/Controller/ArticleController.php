@@ -20,12 +20,21 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', ['article'=>$article]);
     }
     #[Route('/article/create', name: 'app_article_create')]
-    public function create(): Response
+    public function create(EntityManagerInterface $entityManager, Request $request): Response
     {
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
 
-        return $this->render('article/create.html.twig', [
-            'controller_name' => 'ArticleController',
-        ]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_article_show', ['id' => $article->getId()]);
+        }
+
+        return $this->render('article/create.html.twig', ['contact' => $article, 'form' => $form]);
+
     }
     #[Route('/article/{id}/update', name: 'app_article_update',requirements: ['id' => '\d+'])]
     public function update(Article $article,Request $request,EntityManagerInterface $entityManager): Response

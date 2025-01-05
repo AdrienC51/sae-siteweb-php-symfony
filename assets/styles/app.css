@@ -58,3 +58,12 @@ body {
     display: flex;
     justify-content: center;
 }
+.checkbox-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.form-check {
+    margin-bottom: 10px;
+}

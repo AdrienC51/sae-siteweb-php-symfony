@@ -8,8 +8,10 @@ use App\Entity\KeyWord;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ArticleType extends AbstractType
 {
@@ -25,8 +27,17 @@ class ArticleType extends AbstractType
             ->add('description', null, [
                 'empty_data' => '',
             ])
-            ->add('picture', null, [
-                'empty_data' => '',
+            ->add('picture', FileType::class, [
+                'label' => 'Upload Image (JPEG, PNG)',
+                'mapped' => false, // L'image ne sera pas directement liée à une propriété de l'entité
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => ['image/jpeg', 'image/png'],
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG image.',
+                    ])
+                ],
+                'required' => false,
             ])
             ->add('keyWords', EntityType::class, [
                 'class' => KeyWord::class,

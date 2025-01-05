@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Orders List{% endblock %}
+
+{% block body %}
+    <div class="box_title">
+        <h1>Order List</h1>
+    </div>
+    <div class="orderlist">
+    {% for order in orders %}
+        <a class="orderinfo" href="{{ path('app_order_show',{id:order.id}) }}">
+            <h3>Order n°{{ order.id }} ({{ order.status }})</h3>
+            <div class="flex-row d-flex column-gap-1">
+                                <span class="material-symbols-outlined">
+event_available
+</span>
+                <p> {{ order.orderdate|date('d/m/Y')}}</p>
+            </div>
+            <div class="flex-row d-flex column-gap-1">
+
+                                <span class="material-symbols-outlined">
+local_shipping
+</span>
+                <p> {{ order.destaddress }},{{ order.destcity }} {{ order.destpostcode }} </p>
+            </div>
+            <div class="flex-row d-flex column-gap-1">
+                                <span class="material-symbols-outlined">
+paid
+</span>
+                <p> {{ order.price}} €</p>
+
+            </div>
+        </a>
+
+    {% endfor%}
+    </div>
+{% endblock %}

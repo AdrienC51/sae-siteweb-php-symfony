@@ -1,0 +1,14 @@
+<div class="container-lg">
+    {{ form_start(form) }}
+        {{ form_row(form.name, {'label': 'Name', 'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.price, {'label': 'Price', 'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.description, {'label': 'Description', 'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.picture, {'label': 'Picture', 'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.categories, {'label': 'Category', 'attr': {'class': 'form-control checkbox-list', 'placeholder': 'Category ?'}}) }}
+        {{ form_row(form.keyWords, {'label': 'Key Words', 'attr': {'class': 'form-control checkbox-list', 'placeholder': 'Key Words ?'}}) }}
+
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">{{ submit_label }}</button>
+    </div>
+    {{ form_end(form) }}
+</div>

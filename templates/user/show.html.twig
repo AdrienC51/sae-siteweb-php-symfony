@@ -57,7 +57,7 @@
                 <h2>Orders</h2>
                 {% if account.client.orders is not empty %}
                     {% for order in account.client.orders %}
-                            <div class="orderinfo">
+                            <a class="orderinfo" href="{{ path('app_order_show',{id:order.id}) }}">
                                 <h3>Order n°{{ order.id }} ({{ order.status }})</h3>
                                 <div class="flex-row d-flex column-gap-1">
                                 <span class="material-symbols-outlined">
@@ -79,7 +79,7 @@ paid
                                     <p> {{ order.price}} €</p>
 
                                 </div>
-                            </div>
+                            </a>
                     {% endfor %}
                 {% else %}
                     <div class="orderinfo">

@@ -2,57 +2,26 @@
 
 {% block title %}Shop{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        form {
-            margin: 10px;
-        }
-        div.articles {
-            display:flex;
-            flex-wrap:wrap;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 80vmin;
-            overflow-y:scroll;
-        }
-        div.article {
-            width: 30%;
-            margin-bottom: 10px;
-            border: 1px gray solid;
-            border-radius: 5px;
-        }
-        div.article_info {
-            display:flex;
-            justify-content: space-between;
-        }
-        div.article_to_cart {
-            background-color: lightgreen;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" value={% block valueSearch %}""{% endblock %} placeholder="Rechercher..." aria-label="Recherche" name="search">
-        <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Rechercher</button>
-    </form>
-    <div class="articles">
-        {% for i in 1..100 %}
-            <div class="article">
-                <img alt="[article image]" src=""> <br />
-                <div class="article_info">
-                    <span class="article_name">Produit</span>
-                    <span class="article_price">00.00€</span>
+    <div class="main_shop">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" value={% block valueSearch %}""{% endblock %} placeholder="Rechercher..." aria-label="Recherche" name="search">
+            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Rechercher</button>
+        </form>
+        <div class="articles">
+            {% for article in articles %}
+                <div class="article">
+                    <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
+                    <div class="article_info">
+                        <span class="article_name"> {{ article.name }}  </span>
+                        <span class="article_price">{{ article.price }}€</span>
+                    </div>
+                    <div class="article_to_cart">
+                        <span> Quantité </span>
+                        <a href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+                    </div>
                 </div>
-                <div class="article_to_cart">
-                    <span> Quantité </span>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

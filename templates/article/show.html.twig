@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article Details{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">{{ article.name }}</h1>
+        <p class="text-muted">Discover more details about this product</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <img src="{{ article.picture }}" alt="Image of {{ article.name }}" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h3 class="card-title">Product Details</h3>
+                    <hr>
+
+                    <p class="mb-3">
+                        <strong>Price:</strong>
+                        <span class="text-success fw-bold">${{ article.price }}</span>
+                    </p>
+
+                    <p class="mb-3">
+                        <strong>Description:</strong>
+                        <span>{{ article.description }}</span>
+                    </p>
+
+                    <p class="mb-3">
+                        <strong>Categories:</strong>
+                        <ul class="list-unstyled">
+                            {% for elt in article.categories %}
+                                <li>
+                                    <i class="bi bi-tag"></i> {{ elt.name }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <p>
+                        <strong>Key Words:</strong>
+                        <ul class="list-unstyled">
+                            {% for elt in article.keyWords %}
+                                <li>
+                                    <i class="bi bi-key"></i> {{ elt.word }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ path('app_article_update', {'id': article.id}) }}" class="material-symbols-outlined text-warning">Edit</a>
+                        <a href="{{ path('app_article_delete', {'id': article.id}) }}" class="material-symbols-outlined text-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

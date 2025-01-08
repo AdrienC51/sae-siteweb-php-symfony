@@ -13,7 +13,7 @@ class UserController extends AbstractController
     #[Route('/user', name: 'app_user')] // User connection page route
     public function index(): Response
     {
-        return $this->render('user/index.html.twig');
+        return $this->render('user/show.html.twig');
     }
 
     #[Route('/user/{id}', name: 'app_user_show', requirements: ['id' => '\d+'])] // User account page route

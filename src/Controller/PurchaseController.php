@@ -15,4 +15,13 @@ class PurchaseController extends AbstractController
             'controller_name' => 'PurchaseController',
         ]);
     }
+
+    #[Route('/purchase/success', name: 'app_purchase_success')]
+    public function success(): Response
+    {
+        return $this->render('purchase/success.html.twig', [
+            'message' => 'Your purchase was successful!',
+        ]);
+    }
 }
+

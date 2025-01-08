@@ -81,7 +81,7 @@ div.main_shop > div {
     margin-top: 5px;
 }
 
-div.articles {
+div.articles_shop {
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
@@ -90,17 +90,17 @@ div.articles {
     overflow-y:scroll;
     width: 100vmax;
 }
-div.article {
+div.article_shop {
     width: 30%;
     margin-bottom: 10px;
     border: 1px gray solid;
     border-radius: 5px;
 }
-div.article_info {
+div.article_info_shop {
     display:flex;
     justify-content: space-between;
 }
-div.article_to_cart {
+div.article_to_cart_shop {
     background-color: lightgreen;
     display: flex;
     justify-content: space-between;

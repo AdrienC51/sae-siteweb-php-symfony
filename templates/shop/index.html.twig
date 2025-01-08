@@ -5,18 +5,18 @@
 {% block body %}
     <div class="main_shop">
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" value={% block valueSearch %}""{% endblock %} placeholder="Rechercher..." aria-label="Recherche" name="search">
+            <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Rechercher un produit" aria-label="Recherche" name="search">
             <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Rechercher</button>
         </form>
-        <div class="articles">
+        <div class="articles_shop">
             {% for article in articles %}
-                <div class="article">
+                <div class="article_shop">
                     <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
-                    <div class="article_info">
-                        <span class="article_name"> {{ article.name }}  </span>
-                        <span class="article_price">{{ article.price }}€</span>
+                    <div class="article_info_shop">
+                        <span> {{ article.name }}  </span>
+                        <span> {{ article.price }}€ </span>
                     </div>
-                    <div class="article_to_cart">
+                    <div class="article_to_cart_shop">
                         <span> Quantité </span>
                         <a href=""><span class="material-symbols-outlined">shopping_cart</span></a>
                     </div>

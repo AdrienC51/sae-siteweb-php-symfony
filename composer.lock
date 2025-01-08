@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80bee8ae1240b4919d9ab21c2b8fefaa",
+    "content-hash": "de0ae5a4e570b409db316aaddd6a6d24",
     "packages": [
         {
             "name": "composer/semver",
@@ -1312,6 +1312,104 @@
                 "source": "https://github.com/doctrine/sql-formatter/tree/1.5.1"
             },
             "time": "2024-10-21T18:21:57+00:00"
+        },
+        {
+            "name": "easycorp/easyadmin-bundle",
+            "version": "v4.20.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
+                "reference": "cd8aca714bdd598898c3a0ba6a42e4e646641cc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/cd8aca714bdd598898c3a0ba6a42e4e646641cc7",
+                "reference": "cd8aca714bdd598898c3a0ba6a42e4e646641cc7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^2.5",
+                "doctrine/orm": "^2.12|^3.0",
+                "ext-json": "*",
+                "php": ">=8.1",
+                "symfony/asset": "^5.4|^6.0|^7.0",
+                "symfony/cache": "^5.4|^6.0|^7.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/deprecation-contracts": "^3.0",
+                "symfony/doctrine-bridge": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/filesystem": "^5.4|^6.0|^7.0",
+                "symfony/form": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+                "symfony/http-foundation": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/intl": "^5.4|^6.0|^7.0",
+                "symfony/property-access": "^5.4|^6.0|^7.0",
+                "symfony/security-bundle": "^5.4|^6.0|^7.0",
+                "symfony/string": "^5.4|^6.0|^7.0",
+                "symfony/translation": "^5.4|^6.0|^7.0",
+                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
+                "symfony/uid": "^5.4|^6.0|^7.0",
+                "symfony/ux-twig-component": "^2.21",
+                "symfony/validator": "^5.4|^6.0|^7.0",
+                "twig/twig": "^3.15"
+            },
+            "require-dev": {
+                "doctrine/doctrine-fixtures-bundle": "^3.4|3.5.x-dev",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan": "^1.9",
+                "phpstan/phpstan-phpunit": "^1.2",
+                "phpstan/phpstan-strict-rules": "^1.4",
+                "phpstan/phpstan-symfony": "^1.2",
+                "psr/log": "^1.0",
+                "symfony/browser-kit": "^5.4|^6.0|^7.0",
+                "symfony/css-selector": "^5.4|^6.0|^7.0",
+                "symfony/debug-bundle": "^5.4|^6.0|^7.0",
+                "symfony/dom-crawler": "^5.4|^6.0|^7.0",
+                "symfony/expression-language": "^5.4|^6.0|^7.0",
+                "symfony/phpunit-bridge": "^6.1|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EasyCorp\\Bundle\\EasyAdminBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Project Contributors",
+                    "homepage": "https://github.com/EasyCorp/EasyAdminBundle/graphs/contributors"
+                }
+            ],
+            "description": "Admin generator for Symfony applications",
+            "homepage": "https://github.com/EasyCorp/EasyAdminBundle",
+            "keywords": [
+                "admin",
+                "backend",
+                "generator"
+            ],
+            "support": {
+                "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.20.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/javiereguiluz",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-12T07:25:40+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -5272,6 +5370,85 @@
             "time": "2024-09-09T11:45:10+00:00"
         },
         {
+            "name": "symfony/polyfill-uuid",
+            "version": "v1.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-uuid.git",
+                "reference": "21533be36c24be3f4b1669c4725c7d1d2bab4ae2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/21533be36c24be3f4b1669c4725c7d1d2bab4ae2",
+                "reference": "21533be36c24be3f4b1669c4725c7d1d2bab4ae2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "provide": {
+                "ext-uuid": "*"
+            },
+            "suggest": {
+                "ext-uuid": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Uuid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for uuid functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "uuid"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.31.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-09-09T11:45:10+00:00"
+        },
+        {
             "name": "symfony/process",
             "version": "v6.4.15",
             "source": {
@@ -6773,6 +6950,80 @@
             "time": "2024-09-25T14:18:03+00:00"
         },
         {
+            "name": "symfony/uid",
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/uid.git",
+                "reference": "18eb207f0436a993fffbdd811b5b8fa35fa5e007"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/18eb207f0436a993fffbdd811b5b8fa35fa5e007",
+                "reference": "18eb207f0436a993fffbdd811b5b8fa35fa5e007",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/polyfill-uuid": "^1.15"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Uid\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an object-oriented API to generate and represent UIDs",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "UID",
+                "ulid",
+                "uuid"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/uid/tree/v6.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-09-25T14:18:03+00:00"
+        },
+        {
             "name": "symfony/ux-turbo",
             "version": "v2.21.0",
             "source": {
@@ -6869,6 +7120,89 @@
                 }
             ],
             "time": "2024-10-21T19:07:02+00:00"
+        },
+        {
+            "name": "symfony/ux-twig-component",
+            "version": "v2.22.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-twig-component.git",
+                "reference": "9b347f6ca2d9e18cee630787f0a6aa453982bf18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-twig-component/zipball/9b347f6ca2d9e18cee630787f0a6aa453982bf18",
+                "reference": "9b347f6ca2d9e18cee630787f0a6aa453982bf18",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/deprecation-contracts": "^2.2|^3.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/property-access": "^5.4|^6.0|^7.0",
+                "twig/twig": "^3.8"
+            },
+            "conflict": {
+                "symfony/config": "<5.4.0"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/css-selector": "^5.4|^6.0|^7.0",
+                "symfony/dom-crawler": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+                "symfony/phpunit-bridge": "^6.0|^7.0",
+                "symfony/stimulus-bundle": "^2.9.1",
+                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
+                "symfony/webpack-encore-bundle": "^1.15"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/ux",
+                    "name": "symfony/ux"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\TwigComponent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Twig components for Symfony",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "components",
+                "symfony-ux",
+                "twig"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-twig-component/tree/v2.22.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-12-07T18:05:50+00:00"
         },
         {
             "name": "symfony/validator",
@@ -7708,16 +8042,16 @@
         },
         {
             "name": "doctrine/data-fixtures",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "d2ff5046b263868baf6e9b06cf4918f60096c0d0"
+                "reference": "a367a09b7a2b4f63ed57f391bf5713e3e46c7c7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/d2ff5046b263868baf6e9b06cf4918f60096c0d0",
-                "reference": "d2ff5046b263868baf6e9b06cf4918f60096c0d0",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/a367a09b7a2b4f63ed57f391bf5713e3e46c7c7b",
+                "reference": "a367a09b7a2b4f63ed57f391bf5713e3e46c7c7b",
                 "shasum": ""
             },
             "require": {
@@ -7774,7 +8108,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/data-fixtures/issues",
-                "source": "https://github.com/doctrine/data-fixtures/tree/1.8.0"
+                "source": "https://github.com/doctrine/data-fixtures/tree/1.8.1"
             },
             "funding": [
                 {
@@ -7790,7 +8124,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-04T22:36:12+00:00"
+            "time": "2024-12-10T07:00:20+00:00"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -11092,16 +11426,16 @@
         },
         {
             "name": "zenstruck/foundry",
-            "version": "v2.2.2",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/foundry.git",
-                "reference": "44eec45b620fd5419906c387512bd1acdf898647"
+                "reference": "6f744b05706c1780e61368f23bf77e18c83d8fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/44eec45b620fd5419906c387512bd1acdf898647",
-                "reference": "44eec45b620fd5419906c387512bd1acdf898647",
+                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/6f744b05706c1780e61368f23bf77e18c83d8fcd",
+                "reference": "6f744b05706c1780e61368f23bf77e18c83d8fcd",
                 "shasum": ""
             },
             "require": {
@@ -11116,6 +11450,7 @@
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.8",
+                "brianium/paratest": "^6|^7",
                 "dama/doctrine-test-bundle": "^7.0|^8.0",
                 "doctrine/collections": "^1.7|^2.0",
                 "doctrine/common": "^3.2",
@@ -11128,6 +11463,7 @@
                 "symfony/dotenv": "^6.4|^7.0",
                 "symfony/maker-bundle": "^1.55",
                 "symfony/phpunit-bridge": "^6.4|^7.0",
+                "symfony/runtime": "^6.4|^7.0",
                 "symfony/translation-contracts": "^3.4",
                 "symfony/var-dumper": "^6.4|^7.0",
                 "symfony/yaml": "^6.4|^7.0"
@@ -11147,7 +11483,7 @@
                 "files": [
                     "src/functions.php",
                     "src/Persistence/functions.php",
-                    "src/phpunit_helper.php"
+                    "src/symfony_console.php"
                 ],
                 "psr-4": {
                     "Zenstruck\\Foundry\\": "src/",
@@ -11181,7 +11517,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/foundry/issues",
-                "source": "https://github.com/zenstruck/foundry/tree/v2.2.2"
+                "source": "https://github.com/zenstruck/foundry/tree/v2.3.1"
             },
             "funding": [
                 {
@@ -11189,7 +11525,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-05T16:39:17+00:00"
+            "time": "2024-12-12T09:03:06+00:00"
         }
     ],
     "aliases": [],
@@ -11200,7 +11536,8 @@
     "platform": {
         "php": ">=8.1",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-intl": "*"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

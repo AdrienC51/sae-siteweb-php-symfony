@@ -45,6 +45,8 @@ class Client
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->cartLines = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -112,14 +114,17 @@ class Client
         return $this;
     }
 
-    public function getCart(): ?Cart
+    public function getCartLines(): Collection
     {
-        return $this->cart;
+        return $this->cartLines;
     }
 
-    public function setCart(?Cart $cart): static
+    public function addCartLines(CartLine $cartLine): static
     {
-        $this->cart = $cart;
+        if (!$this->cartLines->contains($cartLine)) {
+            $this->cartLines->add($cartLine);
+            $cartLine->setClient($this);
+        }
 
         return $this;
     }

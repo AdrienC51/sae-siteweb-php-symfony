@@ -193,85 +193,60 @@ a[id="stock_del"] {
 
 /* Purchase Page */
 .payment-container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 2em auto;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
 .payment-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
     text-align: center;
+    margin-bottom: 1.5em;
     color: #333;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.payment-container .form-group {
+    margin-bottom: 1em;
 }
 
-.form-group label {
+.payment-container .form-group label {
     display: block;
+    margin-bottom: 0.5em;
     font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
 }
 
-.form-group input {
+.payment-container .form-group input,
+.payment-container .form-group .radio-group {
     width: 100%;
-    padding: 10px;
-    font-size: 1em;
+    padding: 0.5em;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.form-group input:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.error {
-    color: red;
-    font-size: 0.9em;
-}
-
-.radio-group {
+.payment-container .form-group .radio-group {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    margin-top: 0.5em;
 }
 
-.radio-group input {
-    margin: 0;
-}
-
-.submit-btn {
+.payment-container .submit-btn {
     width: 100%;
-    padding: 12px;
-    background-color: #3b4fe4;
+    padding: 0.75em;
+    margin-top: 1em;
+    background-color: #1b6535; /* Vert pharmacie */
     color: white;
-    font-size: 1.1em;
+    font-size: 18px;
+    font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
-.submit-btn:hover {
-    background-color: #2f3cb2;
-}
-
-.link {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.link:hover {
-    text-decoration: underline;
+.payment-container .submit-btn:hover {
+    background-color: #155628;
 }

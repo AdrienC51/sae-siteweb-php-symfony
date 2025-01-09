@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="box">
+        <h1>{{ user.lastname }} {{ user.firstname }}</h1>
+        <ul>
+            <li>{{ user.lastname }}</li>
+            <li>{{ user.firstname }}</li>
+            <li>{{ user.email }}</li>
+            <li>Password (hidden)</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ user.lastname }} {{ user.firstname }}
+{% endblock %}

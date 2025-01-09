@@ -2,19 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\Account;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
     #[Route('/user/{id}', name: 'app_user_show', requirements: ['id' => '\d+'])] // User account page route
-    public function show(): Response
+    public function show(Account $user): Response
     {
-        return $this->render('user/show.html.twig');
+        return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
     }
 
     #[Route('/user/register', name: 'app_user_register')] // User register page route

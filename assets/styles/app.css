@@ -190,3 +190,167 @@ a[id="stock_del"] {
     height: 64px;
     width: 20%;
 }
+
+/* Purchase Page */
+.payment-container {
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.payment-container h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: #333;
+}
+
+.payment-container .form-group {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.payment-container .form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.payment-container .form-group input,
+.payment-container .form-group .radio-group {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.payment-container .form-group input:focus {
+    outline: none;
+    border-color: #1b6535;
+    box-shadow: 0 0 5px rgba(27, 101, 53, 0.5);
+}
+
+.payment-container .form-group .radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.payment-container .submit-btn {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 1em;
+    background-color: #1b6535;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-container .submit-btn:hover {
+    background-color: #155628;
+}
+
+.payment-container .error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 0.5em;
+    display: none;
+}
+
+.payment-container .form-group.invalid input {
+    border-color: #d9534f;
+}
+
+.payment-container .form-group.invalid .error-message {
+    display: block;
+}
+
+/* Purchase Page */
+.payment-container {
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 1.5em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.payment-container h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: #333;
+}
+
+.payment-container .form-group {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.payment-container .form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.payment-container .form-group input,
+.payment-container .form-group .radio-group {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.payment-container .form-group input:focus {
+    outline: none;
+    border-color: #1b6535;
+    box-shadow: 0 0 5px rgba(27, 101, 53, 0.5);
+}
+
+.payment-container .form-group .radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.payment-container .submit-btn {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 1em;
+    background-color: #1b6535;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-container .submit-btn:hover {
+    background-color: #155628;
+}
+
+.payment-container .error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 0.5em;
+    display: none;
+}
+
+.payment-container .form-group.invalid input {
+    border-color: #d9534f;
+}
+
+.payment-container .form-group.invalid .error-message {
+    display: block;
+}

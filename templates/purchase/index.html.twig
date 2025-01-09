@@ -1,0 +1,48 @@
+{# purchase/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Secure Payment{% endblock %}
+
+{% block body %}
+    <div class="payment-container">
+        <h2>Secure Payment</h2>
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
+        <form method="POST" action="{{ path('app_purchase_confirm') }}">
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="____ ____ ____ ____" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM / YY" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="---" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cardHolder">Card Holder</label>
+                <input type="text" id="cardHolder" name="cardHolder" placeholder="Card Holder" required>
+            </div>
+
+            <div class="form-group">
+                <label>Save my card for future purchases</label>
+                <div class="radio-group">
+                    <input type="radio" id="saveCardYes" name="saveCard" value="yes">
+                    <label for="saveCardYes">Yes</label>
+                    <input type="radio" id="saveCardNo" name="saveCard" value="no" checked>
+                    <label for="saveCardNo">No</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Confirm and Pay</button>
+        </form>
+    </div>
+{% endblock %}

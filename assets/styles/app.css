@@ -6,7 +6,9 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+
 /* Home page */
+
 .line-text {
     display: inline-block;
     background-color: #e1dd72;
@@ -30,11 +32,6 @@ body {
     flex: 1;
     padding: 10px;
 }
-.separator {
-    margin-top: 5px;
-    width: 2px;
-    background-color: #000;
-}
 .hidden-text {
     display: none;
 }
@@ -53,7 +50,6 @@ body {
     display: flex;
     justify-content: flex-end;
 }
-
 .box_title {
     display: flex;
     justify-content: center;
@@ -62,8 +58,25 @@ body {
     max-height: 200px;
     overflow-y: auto;
 }
-
-
 .form-check {
     margin-bottom: 10px;
+}
+hr.separator {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 2px;
+    height: auto;
+    background-color: #000;
+    padding: 0;
+}
+@media screen and (max-width: 635px) {
+    .all {
+        flex-direction: column;
+    }
+
+    hr.separator {
+        width: 100%;
+        background-color: #000;
+        padding: 0;
+    }
 }

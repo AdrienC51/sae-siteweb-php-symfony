@@ -86,9 +86,9 @@ body {
     flex-wrap:wrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 67vmin;
+    height: 67vh;
     overflow-y:scroll;
-    width: 100vmax;
+    width: 100vw;
 }
 .article_shop {
     width: 30%;
@@ -130,20 +130,20 @@ a[id="shop"] {
 .articles_stock {
     display:flex;
     flex-direction: column;
-    height: 55vmin;
+    height: 55vh;
     overflow-y:scroll;
-    width: 95vmax;
+    width: 95vw;
     margin-top: 5px;
 }
 
 .form_stock {
-    width: 75vmin;
+    width: 75vw;
 }
 
 .head_stock {
     display: flex;
     height: 64px;
-    width: 91vmax;
+    width: 91vw;
     margin-top: 4px;
 }
 

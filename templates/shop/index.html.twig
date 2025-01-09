@@ -16,7 +16,9 @@
         <div class="articles_shop">
             {% for article in articles %}
                 <div class="article_shop">
-                    <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
+                    <div class="article_icon">
+                        <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
+                    </div>
                     <div class="article_info_shop">
                         <span> <a id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
                         <span> {{ article.price }}€ </span>

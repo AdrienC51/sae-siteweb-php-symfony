@@ -86,7 +86,7 @@ body {
     flex-wrap:wrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 68vmin;
+    height: 67vmin;
     overflow-y:scroll;
     width: 100vmax;
 }
@@ -109,6 +109,13 @@ body {
 a[id="shop"] {
     color: black;
     text-decoration: none;
+}
+
+.article_icon {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Stock Page */

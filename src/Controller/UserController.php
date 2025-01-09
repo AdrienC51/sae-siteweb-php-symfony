@@ -41,8 +41,20 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/{id}/update', name: 'app_user_update', requirements: ['id' => '\d+'])] // User updating account page route
-    public function update(EntityManagerInterface $entityManager, Request $request): Response
+    public function update(Account $account, EntityManagerInterface $entityManager, Request $request): Response
     {
-        return $this->render('user/update.html.twig');
+        $form = $this->createForm(AccountType::class, $account);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $account = $form->getData();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_show', ['id' => $account->getId()]);
+        }
+
+        return $this->render('user/update.html.twig', [
+            'account' => $account,
+            'form' => $form,
+        ]);
     }
 }

@@ -9,6 +9,7 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,8 @@ class AccountType extends AbstractType
         $builder
             ->add('email', EmailType::class, ['empty_data' => ''])
             // ->add('roles')
-            ->add('password')
+            ->add('password', PasswordType::class, [
+                'label' => 'Password'])
             ->add('firstname', null, ['empty_data' => ''])
             ->add('lastname', null, ['empty_data' => ''])
             /*->add('client', EntityType::class, [

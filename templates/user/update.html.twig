@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% set title = "Edition of #{ account.lastname }, #{ account.firstname }" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="box">
+    <h1>{{ title }}</h1>
+    {{ include('user/_form.html.twig', {submit_label: 'Modify', form: form, button: 'w-100 p-3 btn btn-warning btn-primary btn-lg btn-block', title: 'Edition of {{ account.lastname }}, {{ account.firstname }}'}, with_context = false) }}
+{% endblock %}

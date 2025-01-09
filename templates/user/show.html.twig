@@ -10,6 +10,7 @@
             <li>{{ user.email }}</li>
             <li>Password (hidden)</li>
         </ul>
+        Change something ? <a href="{{ url('app_user_update', {id: user.id}) }}">Modify</a>
     </div>
     {% if app.user %}
         <div class="mb-3">

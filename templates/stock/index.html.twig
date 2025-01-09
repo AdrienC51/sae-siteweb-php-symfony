@@ -4,10 +4,17 @@
 
 {% block body %}
     <div class="main_stock">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Rechercher un produit" aria-label="Recherche" name="search">
-            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_stock') }}">Rechercher</button>
-        </form>
+        <div class="form_stock">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" value="{{ prix_min }}" placeholder="Min price" aria-label="Search" name="prix_min">
+                <input class="form-control me-2" type="search" value="{{ prix_max }}" placeholder="Max price" aria-label="Search" name="prix_max">
+                <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Filter</button>
+            </form>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Search for a product" aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_stock') }}">Search</button>
+            </form>
+        </div>
         <div class="articles_stock">
             {% for article in articles %}
                 <div class="article_stock">

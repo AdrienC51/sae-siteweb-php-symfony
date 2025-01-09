@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Account;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 /**
@@ -15,10 +16,14 @@ final class AccountFactory extends PersistentProxyObjectFactory
      *
      * @todo inject services if required
      */
-    private \Transliterator $transliterator;
-    public function __construct()
+    private UserPasswordHasherInterface $passwordHasher;
+
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        $this->transliterator = \Transliterator::create('Any-Latin; Latin-ASCII; Lower()');
+        parent::__construct();
+
+        $this->passwordHasher = $passwordHasher;
     }
 
     public static function class(): string
@@ -36,7 +41,7 @@ final class AccountFactory extends PersistentProxyObjectFactory
         $firstName = self::faker()->firstName();
         $lastName = self::faker()->lastName();
         $domainName = self::faker()->domainName();
-        $email = $this->normalizeName($firstName.'.'.$lastName).'@'.$domainName;
+        $email = self::faker()->unique()->numerify('user-###@example.com');
         $phoneNumber = self::faker()->phoneNumber();
 
         return [
@@ -47,13 +52,6 @@ final class AccountFactory extends PersistentProxyObjectFactory
             'roles' => [],
         ];
     }
-    protected function normalizeName(string $name)
-    {
-        $name = $this->transliterator->transliterate($name);
-        $name = preg_replace('/[^a-z0-9.]/', '-', $name);
-
-        return $name;
-    }
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
@@ -61,7 +59,9 @@ final class AccountFactory extends PersistentProxyObjectFactory
     protected function initialize(): static
     {
         return $this
-            // ->afterInstantiate(function(Account $account): void {})
+            ->afterInstantiate(function (Account $user) {
+                $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
+            })
         ;
     }
 }

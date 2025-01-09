@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <div class="box">
+        <h1>{{ user.lastname }} {{ user.firstname }}</h1>
+        <ul>
+            <li>{{ user.lastname }}</li>
+            <li>{{ user.firstname }}</li>
+            <li>{{ user.email }}</li>
+            <li>Password (hidden)</li>
+        </ul>
+        Change something ? <a href="{{ url('app_user_update', {id: user.id}) }}">Modify</a>
+    </div>
+    {% if app.user %}
+        <div class="mb-3">
+            Do you want to disconnect ? <a href="{{ path('app_logout') }}">Disconnection</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {{ user.lastname }} {{ user.firstname }}
+{% endblock %}

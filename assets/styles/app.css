@@ -210,6 +210,7 @@ a[id="stock_del"] {
 
 .payment-container .form-group {
     margin-bottom: 1em;
+    position: relative;
 }
 
 .payment-container .form-group label {
@@ -227,6 +228,12 @@ a[id="stock_del"] {
     font-size: 16px;
 }
 
+.payment-container .form-group input:focus {
+    outline: none;
+    border-color: #1b6535;
+    box-shadow: 0 0 5px rgba(27, 101, 53, 0.5);
+}
+
 .payment-container .form-group .radio-group {
     display: flex;
     justify-content: space-between;
@@ -237,7 +244,7 @@ a[id="stock_del"] {
     width: 100%;
     padding: 0.75em;
     margin-top: 1em;
-    background-color: #1b6535; /* Vert pharmacie */
+    background-color: #1b6535;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -249,4 +256,19 @@ a[id="stock_del"] {
 
 .payment-container .submit-btn:hover {
     background-color: #155628;
+}
+
+.payment-container .error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 0.5em;
+    display: none;
+}
+
+.payment-container .form-group.invalid input {
+    border-color: #d9534f;
+}
+
+.payment-container .form-group.invalid .error-message {
+    display: block;
 }

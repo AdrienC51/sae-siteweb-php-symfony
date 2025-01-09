@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -25,7 +24,7 @@ class Article
     #[ORM\Column(length: 300, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column( nullable: true)]
+    #[ORM\Column(nullable: true)]
     private ?string $picture;
 
     /**
@@ -330,5 +329,10 @@ class Article
         $this->categories->removeElement($category);
 
         return $this;
+    }
+
+    public function getStock(): int
+    {
+        return $this->articlesDetail->count();
     }
 }

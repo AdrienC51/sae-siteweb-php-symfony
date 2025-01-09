@@ -15,12 +15,20 @@
                 <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_stock') }}">Search</button>
             </form>
         </div>
+        <div class="head_stock">
+            <div class="head_info_stock"></div>
+            <div class="head_info_stock"> Name </div>
+            <div class="head_info_stock"> Price </div>
+            <div class="head_info_stock"> In stock </div>
+            <div class="head_info_stock"></div>
+        </div>
         <div class="articles_stock">
             {% for article in articles %}
                 <div class="article_stock">
                     <div class="article_info_stock"> <img alt="[article image]" src="{{ article.picture }}" width="64" height="64"> </div>
                     <div class="article_info_stock"> <a id="stock" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a> </div>
                     <div class="article_info_stock"> {{ article.price }}€ </div>
+                    <div class="article_info_stock"> {{ article.getStock() }} unit(s) </div>
                     <div class="article_info_stock">
                         <a id="stock_edit" href="{{ path('app_article_update', {'id': article.id}) }}"> <span class="material-symbols-outlined">edit</span></a>
                         <a id="stock_del" href="{{ path('app_article_delete', {'id': article.id}) }}"> <span class="material-symbols-outlined">delete</span></a>

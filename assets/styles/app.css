@@ -130,7 +130,7 @@ a[id="shop"] {
 .articles_stock {
     display:flex;
     flex-direction: column;
-    height: 62vmin;
+    height: 55vmin;
     overflow-y:scroll;
     width: 95vmax;
     margin-top: 5px;
@@ -138,6 +138,20 @@ a[id="shop"] {
 
 .form_stock {
     width: 75vmin;
+}
+
+.head_stock {
+    display: flex;
+    height: 64px;
+    width: 91vmax;
+    margin-top: 4px;
+}
+
+.head_info_stock {
+    text-align: center;
+    border-right: lightgrey 1px solid;
+    height: 64px;
+    width: 20%;
 }
 
 .article_stock {
@@ -160,5 +174,5 @@ a[id="stock_del"] {
     text-align: center;
     border: lightgrey 1px solid;
     height: 64px;
-    width:25%;
+    width: 20%;
 }

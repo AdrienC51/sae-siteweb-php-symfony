@@ -11,6 +11,11 @@
             <li>Password (hidden)</li>
         </ul>
     </div>
+    {% if app.user %}
+        <div class="mb-3">
+            Do you want to disconnect ? <a href="{{ path('app_logout') }}">Disconnection</a>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block title %}

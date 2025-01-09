@@ -14,9 +14,13 @@
                     <div class="article_info_stock"> <img alt="[article image]" src="{{ article.picture }}" width="64" height="64"> </div>
                     <div class="article_info_stock"> <a id="stock" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a> </div>
                     <div class="article_info_stock"> {{ article.price }}€ </div>
-                    <div class="article_info_stock" id="del"><a id="stock" href="{{ path('app_article_delete', {'id': article.id}) }}"> <span class="material-symbols-outlined">delete</span></a> </div>
+                    <div class="article_info_stock">
+                        <a id="stock_edit" href="{{ path('app_article_update', {'id': article.id}) }}"> <span class="material-symbols-outlined">edit</span></a>
+                        <a id="stock_del" href="{{ path('app_article_delete', {'id': article.id}) }}"> <span class="material-symbols-outlined">delete</span></a>
+                    </div>
                 </div>
             {% endfor %}
         </div>
+        <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_article_create') }}">Ajouter un produit au stock</button>
     </div>
 {% endblock %}

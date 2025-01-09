@@ -113,12 +113,17 @@ a[id="shop"] {
 
 /* Stock Page */
 
+.main_stock {
+    margin-top:5px;
+}
+
 .articles_stock {
     display:flex;
     flex-direction: column;
-    height: 68vmin;
+    height: 65vmin;
     overflow-y:scroll;
-    width: 100vmax;
+    width: 95vmin;
+    margin-top: 5px;
 }
 
 .article_stock {
@@ -127,12 +132,13 @@ a[id="shop"] {
     height: 64px;
 }
 
-div[id="del"] {
-    background-color: indianred;
+a[id="stock_edit"] {
+    color: deepskyblue;
+    text-decoration: none;
 }
 
-a[id="stock"] {
-    color: black;
+a[id="stock_del"] {
+    color: indianred;
     text-decoration: none;
 }
 

@@ -16,6 +16,73 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function search(string $text, string $pMin = '', string $pMax = ''): array
+    {
+        if (empty($text) && empty($pMin) && empty($pMax)) {
+            $query = $this->createQueryBuilder('a')
+                ->orderBy('a.name', 'ASC')
+                ->getQuery();
+        } elseif (!empty($text)) {
+            if (!empty($pMin) && !empty($pMax)) {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.name LIKE :text')
+                    ->andWhere('a.price >= :pMin')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->setParameter('pMax', (float) $pMax)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            } elseif (!empty($pMin) && empty($pMax)) {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.name LIKE :text')
+                    ->andWhere('a.price >= :pMin')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            } elseif (empty($pMin) && !empty($pMax)) {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.name LIKE :text')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMax', (float) $pMax)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            } else {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.name LIKE :text')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            }
+        } else {
+            if (!empty($pMin) && !empty($pMax)) {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.price >= :pMin')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->setParameter('pMax', (float) $pMax)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            } elseif (!empty($pMin) && empty($pMax)) {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.price >= :pMin')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            } else {
+                $query = $this->createQueryBuilder('a')
+                    ->where('a.price <= :pMax')
+                    ->setParameter('pMax', (float) $pMax)
+                    ->orderBy('a.name', 'ASC')
+                    ->getQuery();
+            }
+        }
+
+        return $query->getResult();
+    }
+
     //    /**
     //     * @return Article[] Returns an array of Article objects
     //     */

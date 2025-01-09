@@ -1,20 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ShopController!{% endblock %}
+{% block title %}Shop{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/pc/Documents/Cours/S3/sae3-01/src/Controller/ShopController.php</code></li>
-        <li>Your template at <code>C:/Users/pc/Documents/Cours/S3/sae3-01/templates/shop/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="main_shop">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" value="{{ prix_min }}" placeholder="Min price" aria-label="Recherche" name="prix_min">
+            <input class="form-control me-2" type="search" value="{{ prix_max }}" placeholder="Max price" aria-label="Recherche" name="prix_max">
+            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Filter</button>
+        </form>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Search for a product" aria-label="Search" name="search">
+            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Search</button>
+        </form>
+        <div class="articles_shop">
+            {% for article in articles %}
+                <div class="article_shop">
+                    <div class="article_icon">
+                        <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
+                    </div>
+                    <div class="article_info_shop">
+                        <span> <a id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
+                        <span> {{ article.price }}€ </span>
+                    </div>
+                    <div class="article_to_cart_shop">
+                        <a id="shop" href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

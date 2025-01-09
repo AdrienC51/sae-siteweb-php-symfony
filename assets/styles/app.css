@@ -61,6 +61,7 @@ body {
 .form-check {
     margin-bottom: 10px;
 }
+
 hr.separator {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -79,4 +80,113 @@ hr.separator {
         background-color: #000;
         padding: 0;
     }
+}
+
+/* Shop Page */
+
+.main_shop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.main_shop > div {
+    margin-top: 5px;
+}
+
+.articles_shop {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 67vh;
+    overflow-y:scroll;
+    width: 100vw;
+}
+.article_shop {
+    width: 30%;
+    margin-bottom: 10px;
+    border: 1px gray solid;
+    border-radius: 5px;
+}
+.article_info_shop {
+    display:flex;
+    justify-content: space-between;
+}
+.article_to_cart_shop {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: space-between;
+}
+
+a[id="shop"] {
+    color: black;
+    text-decoration: none;
+}
+
+.article_icon {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Stock Page */
+
+.main_stock {
+    margin-top:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.articles_stock {
+    display:flex;
+    flex-direction: column;
+    height: 55vh;
+    overflow-y:scroll;
+    width: 95vw;
+    margin-top: 5px;
+}
+
+.form_stock {
+    width: 75vw;
+}
+
+.head_stock {
+    display: flex;
+    height: 64px;
+    width: 91vw;
+    margin-top: 4px;
+}
+
+.head_info_stock {
+    text-align: center;
+    border-right: lightgrey 1px solid;
+    height: 64px;
+    width: 20%;
+}
+
+.article_stock {
+    display: flex;
+    margin:4px;
+    height: 64px;
+}
+
+a[id="stock_edit"] {
+    color: deepskyblue;
+    text-decoration: none;
+}
+
+a[id="stock_del"] {
+    color: indianred;
+    text-decoration: none;
+}
+
+.article_info_stock {
+    text-align: center;
+    border: lightgrey 1px solid;
+    height: 64px;
+    width: 20%;
 }

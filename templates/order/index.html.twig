@@ -19,6 +19,13 @@ event_available
             <div class="flex-row d-flex column-gap-1">
 
                                 <span class="material-symbols-outlined">
+person
+</span>
+                <p> {{ order.client.account.firstname }} {{ order.client.account.lastname }} </p>
+            </div>
+            <div class="flex-row d-flex column-gap-1">
+
+                                <span class="material-symbols-outlined">
 local_shipping
 </span>
                 <p> {{ order.destaddress }},{{ order.destcity }} {{ order.destpostcode }} </p>

@@ -168,4 +168,13 @@ class Order
 
         return $this;
     }
+
+    public function getPrice()
+    {
+        $total = 0.0;
+        foreach ($this->orderLines as $orderLine) {
+            $total += $orderLine->getPrice();
+        }
+        return $total;
+    }
 }

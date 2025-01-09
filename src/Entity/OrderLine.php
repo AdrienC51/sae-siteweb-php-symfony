@@ -64,4 +64,9 @@ class OrderLine
 
         return $this;
     }
+
+    public function getPrice(): float
+    {
+        return $this->article->getPrice()*$this->quantity;
+    }
 }

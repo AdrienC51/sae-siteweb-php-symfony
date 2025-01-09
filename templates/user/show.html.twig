@@ -88,9 +88,12 @@ paid
                 {% endif %}
             {% elseif is_granted('ROLE_ADMIN')%}
                 <h2>Admin links</h2>
-                <a href="{{ path('app_home') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
+                <a href="{{ path('admin') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
 table_edit
 </span>Back-Office<span class="material-symbols-outlined">arrow_circle_right</span></a>
+                <a href="{{ path('app_order') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
+orders
+</span>Orders<span class="material-symbols-outlined">arrow_circle_right</span></a>
             {% endif %}
         </div>
     </div>

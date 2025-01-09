@@ -13,12 +13,11 @@
                 <div class="article_shop">
                     <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
                     <div class="article_info_shop">
-                        <span> {{ article.name }}  </span>
+                        <span> <a id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
                         <span> {{ article.price }}€ </span>
                     </div>
                     <div class="article_to_cart_shop">
-                        <span> Quantité </span>
-                        <a href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+                        <a id="shop" href=""><span class="material-symbols-outlined">shopping_cart</span></a>
                     </div>
                 </div>
             {% endfor %}

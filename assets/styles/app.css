@@ -106,6 +106,11 @@ body {
     justify-content: space-between;
 }
 
+a[id="shop"] {
+    color: black;
+    text-decoration: none;
+}
+
 /* Stock Page */
 
 .articles_stock {

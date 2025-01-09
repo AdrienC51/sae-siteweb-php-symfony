@@ -122,15 +122,22 @@ a[id="shop"] {
 
 .main_stock {
     margin-top:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .articles_stock {
     display:flex;
     flex-direction: column;
-    height: 65vmin;
+    height: 62vmin;
     overflow-y:scroll;
-    width: 95vmin;
+    width: 95vmax;
     margin-top: 5px;
+}
+
+.form_stock {
+    width: 75vmin;
 }
 
 .article_stock {

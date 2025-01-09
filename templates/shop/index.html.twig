@@ -5,8 +5,13 @@
 {% block body %}
     <div class="main_shop">
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Rechercher un produit" aria-label="Recherche" name="search">
-            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Rechercher</button>
+            <input class="form-control me-2" type="search" value="{{ prix_min }}" placeholder="Min price" aria-label="Recherche" name="prix_min">
+            <input class="form-control me-2" type="search" value="{{ prix_max }}" placeholder="Max price" aria-label="Recherche" name="prix_max">
+            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Filter</button>
+        </form>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Search for a product" aria-label="Search" name="search">
+            <button class="btn btn-outline-success" type="submit" formaction="{{ path('app_shop') }}">Search</button>
         </form>
         <div class="articles_shop">
             {% for article in articles %}

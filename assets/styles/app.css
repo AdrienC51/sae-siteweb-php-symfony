@@ -70,18 +70,18 @@ body {
 
 /* Shop Page */
 
-div.main_shop {
+.main_shop {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 5px;
 }
 
-div.main_shop > div {
+.main_shop > div {
     margin-top: 5px;
 }
 
-div.articles_shop {
+.articles_shop {
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
@@ -90,18 +90,50 @@ div.articles_shop {
     overflow-y:scroll;
     width: 100vmax;
 }
-div.article_shop {
+.article_shop {
     width: 30%;
     margin-bottom: 10px;
     border: 1px gray solid;
     border-radius: 5px;
 }
-div.article_info_shop {
+.article_info_shop {
     display:flex;
     justify-content: space-between;
 }
-div.article_to_cart_shop {
+.article_to_cart_shop {
     background-color: lightgreen;
     display: flex;
     justify-content: space-between;
+}
+
+/* Stock Page */
+
+.articles_stock {
+    display:flex;
+    flex-direction: column;
+    height: 68vmin;
+    overflow-y:scroll;
+    width: 100vmax;
+}
+
+.article_stock {
+    display: flex;
+    margin:4px;
+    height: 64px;
+}
+
+div[id="del"] {
+    background-color: indianred;
+}
+
+a[id="stock"] {
+    color: black;
+    text-decoration: none;
+}
+
+.article_info_stock {
+    text-align: center;
+    border: lightgrey 1px solid;
+    height: 64px;
+    width:25%;
 }

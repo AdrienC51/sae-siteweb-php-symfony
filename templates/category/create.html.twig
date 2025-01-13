@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Category{% endblock %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4 ">Add a New Category</h1>
+            <p class="text-muted">Please fill out the details for the category you wish to add.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Category Details</h3>
+                        <hr>
+                        {{ include('category/_form.html.twig', {submit_label: "Add Category", form: form}, with_context=false) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

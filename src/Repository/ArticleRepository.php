@@ -83,6 +83,55 @@ class ArticleRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function searchWithCategory(int $catId, string $text, string $pMin = '', string $pMax = ''): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->join('a.categories', 'c')
+            ->where('c.id = :catId');
+
+        if (!empty($text)) {
+            if (!empty($pMin) && !empty($pMax)) {
+                $query = $query->andWhere('a.name LIKE :text')
+                    ->andWhere('a.price >= :pMin')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->setParameter('pMax', (float) $pMax);
+            } elseif (!empty($pMin) && empty($pMax)) {
+                $query = $query->andWhere('a.name LIKE :text')
+                    ->andWhere('a.price >= :pMin')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMin', (float) $pMin);
+            } elseif (empty($pMin) && !empty($pMax)) {
+                $query = $query->andWhere('a.name LIKE :text')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('text', '%'.$text.'%')
+                    ->setParameter('pMax', (float) $pMax);
+            } else {
+                $query = $query->andWhere('a.name LIKE :text')
+                    ->setParameter('text', '%'.$text.'%');
+            }
+        } else {
+            if (!empty($pMin) && !empty($pMax)) {
+                $query = $query->andWhere('a.price >= :pMin')
+                    ->andWhere('a.price <= :pMax')
+                    ->setParameter('pMin', (float) $pMin)
+                    ->setParameter('pMax', (float) $pMax);
+            } elseif (!empty($pMin) && empty($pMax)) {
+                $query = $query->andWhere('a.price >= :pMin')
+                    ->setParameter('pMin', (float) $pMin);
+            } elseif(empty($pMin) && !empty($pMax)) {
+                $query = $query->andWhere('a.price <= :pMax')
+                    ->setParameter('pMax', (float) $pMax);
+            }
+        }
+        $query = $query->setParameter('catId', $catId)
+            ->orderBy('a.name', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     //    /**
     //     * @return Article[] Returns an array of Article objects
     //     */

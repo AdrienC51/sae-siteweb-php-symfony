@@ -61,6 +61,22 @@ class CategoryController extends AbstractController
         return $this->render('category/create.html.twig', ['category' => $category, 'form' => $form]);
 
     }
+
+    #[Route('/category/{id}/update', name: 'app_category_update',requirements: ['id' => '\d+'])]
+    public function update(Category $category,Request $request,EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->setUpdateArticles($category, $request);
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_category');
+        }
+
+        return $this->render('category/update.html.twig', ['category'=>$category,'form'=>$form]);
+    }
     public function setUpdateArticles(Category $category, Request $request): void
     {
         $allArticles = $this->articleRepository->findAll();

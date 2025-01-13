@@ -129,7 +129,7 @@ body {
     background-color: #d6d6d6;
 }
 
-.orderlist {
+.boxlist {
     display: grid;
     grid-auto-rows: max-content;
 
@@ -141,12 +141,12 @@ body {
 }
 
 @media (min-width: 700px) and (max-width: 1299px) {
-    .orderlist {
+    .boxlist {
         grid-template-columns: 1fr 1fr;
     }
 }
 @media (min-width: 1300px) {
-    .orderlist {
+    .boxlist {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
@@ -449,4 +449,15 @@ a[id="stock_del"] {
 
 .payment-container .form-group.invalid .error-message {
     display: block;
+}
+
+.category {
+    border : 1px solid black;
+    border-radius: 10px;
+    padding : 5px;
+    font-size: 25px;
+}
+.category span {
+    font-size: 15px;
+    align-self: center;
 }

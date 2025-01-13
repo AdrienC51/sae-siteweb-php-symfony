@@ -9,10 +9,12 @@ use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class CategoryController extends AbstractController
 {
@@ -43,6 +45,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/category/create', name: 'app_category_create')]
     public function create(EntityManagerInterface $entityManager, Request $request): Response
     {
@@ -62,6 +65,7 @@ class CategoryController extends AbstractController
 
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/category/{id}/update', name: 'app_category_update',requirements: ['id' => '\d+'])]
     public function update(Category $category,Request $request,EntityManagerInterface $entityManager): Response
     {
@@ -76,6 +80,27 @@ class CategoryController extends AbstractController
         }
 
         return $this->render('category/update.html.twig', ['category'=>$category,'form'=>$form]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/category/{id}/delete', name: 'app_category_delete',requirements: ['id' => '\d+'])]
+    public function delete(Category $category,Request $request,EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createFormBuilder($category)
+            ->add('delete', SubmitType::class)
+            ->add('cancel', SubmitType::class)
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->getClickedButton() === $form->get('delete')) {
+                $this->setUpdateArticles($category, $request);
+                $entityManager->remove($category);
+                $entityManager->flush();
+            }
+
+            return $this->redirectToRoute('app_category');
+        }
+        return $this->render('category/delete.html.twig', ['category' => $category, 'form' => $form]);
     }
     public function setUpdateArticles(Category $category, Request $request): void
     {

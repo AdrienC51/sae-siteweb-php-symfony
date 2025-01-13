@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body %}
+    <div class="box_title">
+        <h1>Categories</h1>
+    </div>
+    <div class="boxlist">
+    {% for categoryInfo in categories %}
+        {% set category = categoryInfo['category'] %}
+        {% set count = categoryInfo['count'] %}
+        <div class="d-flex w-100">
+        <a href= "category/{{ category.id }}" class="category nav-link w-100 d-flex justify-content-between">
+            {{ category.getName() }}
+            <span class="badge text-bg-success rounded-pill">
+                {{ count }}
+            </span>
+        </a>
+        </div>
+
+
+
+    {%endfor %}
+    </div>
+
+{% endblock %}

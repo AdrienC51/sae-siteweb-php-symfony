@@ -7,11 +7,33 @@
         <h1>Categories</h1>
     </div>
     <div class="boxlist">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="d-flex w-100">
+                <a href= "{{ path('app_category_create') }}" class="category nav-link w-100 d-flex justify-content-between bg-success">
+                    New Category
+                    <span class="material-symbols-outlined">
+add_circle
+</span>
+                </a>
+            </div>
+        {% endif %}
     {% for categoryInfo in categories %}
         {% set category = categoryInfo['category'] %}
         {% set count = categoryInfo['count'] %}
-        <div class="d-flex w-100">
-        <a href= "category/{{ category.id }}" class="category nav-link w-100 d-flex justify-content-between">
+        <div class="d-flex w-100 category">
+            {% if is_granted('ROLE_ADMIN')%}
+                <a href="{{ path('app_category_update', {id: category.id}) }}" class="nav-link">
+                    <span class="material-symbols-outlined text-warning">
+                        edit
+                    </span>
+                </a>
+                <a href="{{ path('app_category_delete', {id: category.id}) }}" class="nav-link">
+                    <span class="material-symbols-outlined text-danger">
+                        delete
+                    </span>
+                </a>
+            {% endif %}
+            <a href= "{{ path('app_category_show',{id:category.id}) }}" class=" nav-link w-100 d-flex justify-content-between">
             {{ category.getName() }}
             <span class="badge text-bg-success rounded-pill">
                 {{ count }}

@@ -6,7 +6,7 @@
     <div class="box_title">
         <h1>Order List</h1>
     </div>
-    <div class="orderlist">
+    <div class="boxlist">
     {% for order in orders %}
         <a class="orderinfo" href="{{ path('app_order_show',{id:order.id}) }}">
             <h3>Order n°{{ order.id }} ({{ order.status }})</h3>

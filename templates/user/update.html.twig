@@ -8,7 +8,13 @@
 
 {% block body %}
     <br>
-    <div class="box">
-    <h1>{{ title }}</h1>
-    {{ include('user/_form.html.twig', {submit_label: 'Modify', form: form, button: 'w-100 p-3 btn btn-warning btn-primary btn-lg btn-block', title: 'Edition of {{ account.lastname }}, {{ account.firstname }}'}, with_context = false) }}
+    {% if not app.user %}
+        <div class="alert alert-danger">You are not even connected !</div>
+    {% elseif account.id != app.user.id %}
+        <div class="alert alert-danger">You should not be able to modify this account !</div>
+    {% else %}
+        <div class="box">
+        <h1>{{ title }}</h1>
+        {{ include('user/_form.html.twig', {submit_label: 'Modify', form: form, button: 'w-100 p-3 btn btn-warning btn-primary btn-lg btn-block', title: 'Edition of {{ account.lastname }}, {{ account.firstname }}'}, with_context = false) }}
+    {% endif %}
 {% endblock %}

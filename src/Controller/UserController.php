@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class UserController extends AbstractController
@@ -21,13 +22,16 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/register', name: 'app_user_register')] // User register page route
-    public function register(EntityManagerInterface $entityManager, Request $request): Response
+    public function register(EntityManagerInterface $entityManager, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $account = new Account();
         $form = $this->createForm(AccountType::class, $account);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $account = $form->getData();
+            $password = $form->get('password')->getData();
+            $hashedPassword = $passwordHasher->hashPassword($account, $password);
+            $account->setPassword($hashedPassword);
             $entityManager->persist($account);
             $entityManager->flush();
 
@@ -41,12 +45,14 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/{id}/update', name: 'app_user_update', requirements: ['id' => '\d+'])] // User updating account page route
-    public function update(Account $account, EntityManagerInterface $entityManager, Request $request): Response
+    public function update(Account $account, EntityManagerInterface $entityManager, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(AccountType::class, $account);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $account = $form->getData();
+            $password = $form->get('password')->getData();
+            $hashedPassword = $passwordHasher->hashPassword($account, $password);
+            $account->setPassword($hashedPassword);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_user_show', ['id' => $account->getId()]);

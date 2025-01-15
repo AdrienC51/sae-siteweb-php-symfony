@@ -19,9 +19,7 @@ class AccountType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, ['empty_data' => ''])
-            // ->add('roles')
-            ->add('password', PasswordType::class, [
-                'label' => 'Password'])
+            ->add('password', PasswordType::class, ['label' => 'Password'])
             ->add('firstname', null, ['empty_data' => ''])
             ->add('lastname', null, ['empty_data' => ''])
             /*->add('client', EntityType::class, [

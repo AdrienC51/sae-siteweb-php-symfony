@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chatbot{% endblock %}
+
+{% block body %}
+    <script src="/js/chatbot.js"></script>
+    <div class="chat-container">
+        <div id="chatbox"></div>
+
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Posez une question..." />
+            <button id="send-btn">Envoyer</button>
+        </div>
+    </div>
+
+{% endblock %}

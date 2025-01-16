@@ -64,4 +64,13 @@ class Unit
 
         return $this;
     }
+    public function isExpired(): bool
+    {
+        $dateTime = new \DateTime('now');
+        if ($this->expirationDate < $dateTime) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

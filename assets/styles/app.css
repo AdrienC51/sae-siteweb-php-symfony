@@ -55,6 +55,9 @@ body {
     justify-content: center;
 }
 
+.box_title span {
+    font-size: 35px;
+}
 .profilepage {
     display: flex;
     flex-direction: row;

@@ -8,7 +8,13 @@
     </div>
     <div class="profilepage">
             <div class="orders">
+                <div class="d-flex justify-content-between">
                 <h2>Units in stock</h2>
+                {{ form_start(delete) }}
+                {{ form_widget(delete.delete, { 'label': 'Delete expired', 'attr': {'class':'btn btn-danger'} }) }}
+
+                {{ form_end(delete) }}
+                </div>
                 <table class="line-table">
                     <tr>
                         <th>Id</th>

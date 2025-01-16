@@ -3,7 +3,10 @@
 {% block title %}Stock of {{ article.name }}{% endblock %}
 
 {% block body %}
-    <div class="box_title">
+    <div class="box_title d-flex align-items-center column-gap-1">
+        <a href="{{ path('app_stock') }}" class="nav-link"><span class="material-symbols-outlined link-info">
+arrow_circle_left
+</span></a>
         <h1>Stock of {{ article.name }}</h1>
     </div>
     <div class="profilepage">

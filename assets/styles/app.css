@@ -104,12 +104,20 @@ body {
     color: black;
 }
 .orderinfo h3 {
-    background-color: #1b6535;
     color: #ffffff;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
+}
+.delivered {
+    background-color: #1b6535;
+}
+.pending {
+    background-color: #434343;
+}
+.being-delivered {
+    background-color: #e1dd72;
 }
 
 .line-table {

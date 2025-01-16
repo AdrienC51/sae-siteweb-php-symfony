@@ -476,3 +476,8 @@ a[id="stock_del"] {
     display: flex;
     align-items: center;
 }
+
+.italic {
+    color:grey;
+    font-style:italic;
+}

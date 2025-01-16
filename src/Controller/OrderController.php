@@ -13,7 +13,7 @@ class OrderController extends AbstractController
     #[Route('/order', name: 'app_order')]
     public function index(OrderRepository $orderRepository): Response
     {
-        $orders = $orderRepository->findAllOrderderByNewestDate();
+        $orders = $orderRepository->findAllOrderedByNewestDate();
         return $this->render('order/index.html.twig', ['orders' => $orders]);
     }
     #[Route('/order/{id}', name: 'app_order_show',requirements: ['id' => '\d+'])]

@@ -15,7 +15,7 @@ class OrderRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Order::class);
     }
-    public function findAllOrderderByNewestDate()
+    public function findAllOrderedByNewestDate()
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.orderDate', 'DESC');

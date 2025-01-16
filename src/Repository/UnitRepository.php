@@ -16,6 +16,16 @@ class UnitRepository extends ServiceEntityRepository
         parent::__construct($registry, Unit::class);
     }
 
+    public function findExpiredByArticle(int $articleId)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->join('u.article', 'a')
+            ->where('a.id = :articleId')
+            ->setParameter('articleId', $articleId)
+            ->andWhere("CURRENT_TIMESTAMP() > u.expirationDate");
+        return $qb->getQuery()->execute();
+    }
+
     //    /**
     //     * @return Unit[] Returns an array of Unit objects
     //     */

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Repository\StockEvolutionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -22,5 +24,11 @@ class StockController extends AbstractController
             'prix_min' => $prix_min,
             'prix_max' => $prix_max,
         ]);
+    }
+    #[Route('/stock/{id}', name: 'app_stock_detail', requirements: ['id' => '\d+'])]
+    public function detail(Article $article, StockEvolutionRepository $SERepository): Response
+    {
+        $stockEvolutions = $SERepository->findByArticleIdOrderedByDate($article->getId());
+        return $this->render('stock/detail.html.twig', ["article"=>$article,"se"=>$stockEvolutions]);
     }
 }

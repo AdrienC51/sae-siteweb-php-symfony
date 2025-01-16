@@ -15,6 +15,16 @@
                         <th>Entry Date</th>
                         <th>Expiration Date</th>
                     </tr>
+                    <tr>    {{ form_start(form) }}
+                        <td><button type="submit" class="btn btn-primary">Add</button>
+                        </td>
+                        <td>{{ 'now'|date('d/m/Y') }}
+                        </td>
+                        <td>{{ form_errors(form.expirationDate) }}{{ form_widget(form.expirationDate, {'attr': {'class': 'form-control'}}) }}
+                        </td>
+                        {{ form_end(form) }}
+
+                    </tr>
                     {% for unit in article.articlesDetail %}
                         <tr class="order-line">
                             <td>{{unit.id }}</td>

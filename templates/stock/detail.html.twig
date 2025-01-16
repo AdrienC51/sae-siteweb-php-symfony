@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stock of {{ article.name }}{% endblock %}
+
+{% block body %}
+    <div class="box_title">
+        <h1>Stock of {{ article.name }}</h1>
+    </div>
+    <div class="profilepage">
+            <div class="orders">
+                <h2>Units in stock</h2>
+                <table class="line-table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Entry Date</th>
+                        <th>Expiration Date</th>
+                    </tr>
+                    {% for unit in article.articlesDetail %}
+                        <tr class="order-line">
+                            <td>{{unit.id }}</td>
+                            <td>{{ unit.entryDate|date('d/m/Y') }}</td>
+                            <td {% if unit.isExpired %}class="bg-danger"{% endif %}>{{ unit.expirationDate|date('d/m/Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        <hr class="separator">
+        <div class="orders">
+            <h2>Stock evolutions</h2>
+            <table class="line-table">
+                <tr>
+                    <th>Variation</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </tr>
+                {% for evolution in se %}
+                    <tr class="order-line">
+                        <td class="{% if evolution.type == "IN" %}bg-success">+{% else %}bg-danger">-{% endif %}</td>
+                        <td>{{ evolution.quantity }}</td>
+                        <td>{{ evolution.evolutionDate|date('d/m/Y') }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

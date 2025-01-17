@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function queryHuggingFace(input) {
         try {
             const response = await fetch(
-                "https://api-inference.huggingface.co/models/distilbert/distilgpt2",
+                "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
                 {
                     headers: {
                         Authorization: "Bearer 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",

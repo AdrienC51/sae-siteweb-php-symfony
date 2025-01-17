@@ -29,4 +29,14 @@ class ShowCest
         $I->amOnPage('/user/1');
         $I->see('Admin Links', 'h2');
     }
+
+    public function noAccessToOtherId(ControllerTester $I)
+    {
+        $account = AccountFactory::createOne();
+        AccountFactory::createOne();
+        $realUser = $account->_real();
+        $I->amLoggedInAs($realUser);
+        $I->amOnPage('/user/2');
+        $I->see('You should not be able to see these informations !', 'div');
+    }
 }

@@ -29,4 +29,24 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->amOnPage('/article/1');
     }
+
+    public function orderArticles(ControllerTester $I): void
+    {
+        ArticleFactory::createSequence(
+            [
+                ['name' => 'Tylenol 500mg'],
+                ['name' => 'Tylenol 650mg'],
+                ['name' => 'Doliprane 500mg'],
+                ['name' => 'Doliprane 250mg'],
+            ]
+        );
+        $I->amOnPage('/shop');
+        $I->see('Doliprane 500mg');
+        $articles = $I->grabMultiple('a.article_name_shop');
+        $I->assertCount(4, $articles);
+        $I->assertEquals('Doliprane 250mg', $articles[0]);
+        $I->assertEquals('Doliprane 500mg', $articles[1]);
+        $I->assertEquals('Tylenol 500mg', $articles[2]);
+        $I->assertEquals('Tylenol 650mg', $articles[3]);
+    }
 }

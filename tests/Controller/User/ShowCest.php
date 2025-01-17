@@ -20,4 +20,13 @@ class ShowCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeCurrentRouteIs('app_user_show', ['id' => $account->getId()]);
     }
+
+    public function adminLinksHere(ControllerTester $I)
+    {
+        $account = AccountFactory::createOne(['firstname' => 'Apollo', 'lastname' => 'Justice', 'email' => 'just@example.com', 'roles' => ['ROLE_ADMIN']]);
+        $realUser = $account->_real();
+        $I->amLoggedInAs($realUser);
+        $I->amOnPage('/user/1');
+        $I->see('Admin Links', 'h2');
+    }
 }

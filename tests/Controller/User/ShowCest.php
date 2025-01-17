@@ -4,6 +4,7 @@
 namespace App\Tests\Controller\User;
 
 use App\Factory\AccountFactory;
+use App\Factory\ClientFactory;
 use App\Tests\Support\ControllerTester;
 
 class ShowCest
@@ -19,6 +20,8 @@ class ShowCest
         $I->click('account_circleAccount');
         $I->seeResponseCodeIsSuccessful();
         $I->seeCurrentRouteIs('app_user_show', ['id' => $account->getId()]);
+        $I->see('Freeman Morgan', 'h1');
+        $I->see('Freeman', 'li');
     }
 
     public function adminLinksHere(ControllerTester $I)
@@ -46,4 +49,15 @@ class ShowCest
         $I->amOnPage('/user/1');
         $I->see('You are not even connected !', 'div');
     }
+
+    public function clientOrdersHere(ControllerTester $I)
+    {
+        $account = AccountFactory::createOne();
+        ClientFactory::createOne(['account' => $account, 'address' => '53 Rue Saint Martin', 'post_code' => '51100', 'city' => 'Reims', 'phone' => '951-677-8834']);
+        $realUser = $account->_real();
+        $I->amLoggedInAs($realUser);
+        $I->amOnPage('/user/1');
+        $I->see('Orders', 'h2');
+    }
+
 }

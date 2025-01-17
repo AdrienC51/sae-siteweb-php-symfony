@@ -49,4 +49,24 @@ class IndexCest
         $I->assertEquals('Tylenol 500mg', $articles[2]);
         $I->assertEquals('Tylenol 650mg', $articles[3]);
     }
+
+
+
+    public function searchForArticles(ControllerTester $I): void
+    {
+        ArticleFactory::createSequence(
+            [
+                ['name' => 'Tylenol 500mg'],
+                ['name' => 'Tylenol 650mg'],
+                ['name' => 'Doliprane 500mg'],
+                ['name' => 'Doliprane 250mg'],
+            ]
+        );
+        $I->amOnPage('/shop');
+        $I->fillField("input[name='search']", 'oli');
+        $I->click('Search');
+        $I->amOnPage('/shop?search=oli');
+        $I->see('Doliprane 250mg');
+        $I->see('Doliprane 500mg');
+    }
 }

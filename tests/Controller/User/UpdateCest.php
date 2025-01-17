@@ -23,4 +23,21 @@ class UpdateCest
         $I->see('Edition of Fey, Maya', 'h1');
         $I->see('Modify', 'button');
     }
+
+    public function noAccessToOtherId(ControllerTester $I)
+    {
+        $account = AccountFactory::createOne();
+        AccountFactory::createOne();
+        $realUser = $account->_real();
+        $I->amLoggedInAs($realUser);
+        $I->amOnPage('/user/2/update');
+        $I->see('You should not be able to modify this account !', 'div');
+    }
+
+    public function noAccessWhenDisconnected(ControllerTester $I)
+    {
+        AccountFactory::createOne();
+        $I->amOnPage('/user/1/update');
+        $I->see('You are not even connected !', 'div');
+    }
 }

@@ -9,7 +9,7 @@
     <div class="boxlist">
     {% for order in orders %}
         <a class="orderinfo" href="{{ path('app_order_show',{id:order.id}) }}">
-            <h3>Order n°{{ order.id }} ({{ order.status }})</h3>
+            <h3 class="{%if order.status == "LIVRE" %}delivered{% elseif order.status == "EN LIVRAISON"%}being-delivered{% else %}pending{% endif %}">Order n°{{ order.id }} ({{ order.status }})</h3>
             <div class="flex-row d-flex column-gap-1">
                                 <span class="material-symbols-outlined">
 event_available

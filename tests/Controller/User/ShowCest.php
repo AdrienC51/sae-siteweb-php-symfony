@@ -39,4 +39,11 @@ class ShowCest
         $I->amOnPage('/user/2');
         $I->see('You should not be able to see these informations !', 'div');
     }
+
+    public function noAccessWhenDisconnected(ControllerTester $I)
+    {
+        AccountFactory::createOne();
+        $I->amOnPage('/user/1');
+        $I->see('You are not even connected !', 'div');
+    }
 }

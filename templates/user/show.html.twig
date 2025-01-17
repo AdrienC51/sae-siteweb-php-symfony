@@ -15,10 +15,11 @@
             <li>{{ user.lastname }}</li>
             <li>{{ user.firstname }}</li>
             <li>{{ user.email }}</li>
-            <li>Password (hidden)</li>
             {% if user.client.id is defined %}
                 <li> {{ user.client.phone}}</li>
                 <li>{{ user.client.address}}, {{ user.client.city}} {{user.client.postcode}}</li>
+            {% else %}
+                <li>You don't have any client information (you never ordered)</li>
             {% endif %}
         </ul>
         Change something ? <a href="{{ url('app_user_update', {id: user.id}) }}">Modify</a>

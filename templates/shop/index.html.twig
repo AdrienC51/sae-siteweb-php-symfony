@@ -20,7 +20,7 @@
                         <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
                     </div>
                     <div class="article_info_shop">
-                        <span> <a id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
+                        <span> <a class="article_name_shop" id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
                         <span> {{ article.price }}€ </span>
                     </div>
                     <div class="article_to_cart_shop">

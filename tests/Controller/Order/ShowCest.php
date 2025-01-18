@@ -27,7 +27,11 @@ class ShowCest
     }
     public function accessIsRestrictedToAuthenticatedUser(ControllerTester $I)
     {
-        $I->amOnPage('/order');
+        $user = AccountFactory::createOne(['firstname'=>'Monica']);
+        ClientFactory::createOne(['account'=>$user]);
+        DeliveryFactory::createOne();
+        OrderFactory::createOne();
+        $I->amOnPage('/order/1');
         $I->seeCurrentRouteIs('app_login');
     }
 }

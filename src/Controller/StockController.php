@@ -18,7 +18,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMIN')]
-
 class StockController extends AbstractController
 {
     #[Route('/stock', name: 'app_stock')]
@@ -34,6 +33,7 @@ class StockController extends AbstractController
             'prix_max' => $prix_max,
         ]);
     }
+
     #[Route('/stock/{id}', name: 'app_stock_detail', requirements: ['id' => '\d+'])]
     public function detail(Article $article, StockEvolutionRepository $SERepository, EntityManagerInterface $entityManager, Request $request, UnitRepository $unitRepository): Response
     {
@@ -59,6 +59,7 @@ class StockController extends AbstractController
             $entityManager->persist($unit);
             $entityManager->flush();
         }
-        return $this->render('stock/detail.html.twig', ["article"=>$article,"se"=>$stockEvolutions,'form'=>$form, 'delete'=>$delete]);
+
+        return $this->render('stock/detail.html.twig', ['article' => $article, 'se' => $stockEvolutions, 'form' => $form, 'delete' => $delete]);
     }
 }

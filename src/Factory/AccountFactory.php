@@ -18,7 +18,6 @@ final class AccountFactory extends PersistentProxyObjectFactory
      */
     private UserPasswordHasherInterface $passwordHasher;
 
-
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();

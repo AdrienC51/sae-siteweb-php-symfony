@@ -67,6 +67,6 @@ class RestockingLine
 
     public function getPrice(): float
     {
-        return $this->article->getPrice()*$this->quantity;
+        return $this->article->getPrice() * $this->quantity;
     }
 }

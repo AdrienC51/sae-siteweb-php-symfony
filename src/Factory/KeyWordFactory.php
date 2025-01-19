@@ -31,8 +31,6 @@ final class KeyWordFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
-
-
         return [];
     }
 

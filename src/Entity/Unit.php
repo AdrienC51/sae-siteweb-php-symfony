@@ -64,6 +64,7 @@ class Unit
 
         return $this;
     }
+
     public function isExpired(): bool
     {
         $dateTime = new \DateTime('now');

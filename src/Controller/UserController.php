@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
-use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
 
 class UserController extends AbstractController
 {
@@ -47,9 +45,9 @@ class UserController extends AbstractController
             $account->setClient($client);
             $entityManager->persist($account);
             $entityManager->flush();
-            $userAuthenticator->authenticateUser($account, $authenticator,$request);
+            $userAuthenticator->authenticateUser($account, $authenticator, $request);
 
-            return $this->redirectToRoute('app_user_update_client',['id' => $account->getId()]);
+            return $this->redirectToRoute('app_user_update_client', ['id' => $account->getId()]);
         }
 
         return $this->render('user/register.html.twig', [
@@ -81,18 +79,21 @@ class UserController extends AbstractController
     #[Route('/user/{id}/updateClient', name: 'app_user_update_client', requirements: ['id' => '\d+'])] // User updating account page route
     public function updateClient(Account $account, EntityManagerInterface $entityManager, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
-        if ($account->getClient() !== null ){
+        if (null !== $account->getClient()) {
             $form = $this->createForm(ClientType::class, $account->getClient());
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager->flush();
+
                 return $this->redirectToRoute('app_user_show', ['id' => $account->getId()]);
             }
+
             return $this->render('user/updateClient.html.twig', [
                 'account' => $account,
                 'form' => $form,
             ]);
         }
+
         return $this->redirectToRoute('app_user_show', ['id' => $account->getId()]);
     }
 }

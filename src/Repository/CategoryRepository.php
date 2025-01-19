@@ -16,7 +16,6 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-
     public function findAllOrderedByNameWithArticleCount()
     {
         $qb = $this->createQueryBuilder('ca')
@@ -28,7 +27,6 @@ class CategoryRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->execute();
     }
-
 
     //    /**
     //     * @return Category[] Returns an array of Category objects

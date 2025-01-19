@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\Home;
 
 use App\Tests\Support\ControllerTester;

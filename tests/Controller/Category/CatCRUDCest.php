@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\Category;
 
 use App\Factory\AccountFactory;
@@ -17,7 +16,7 @@ class CatCRUDCest
         $I->amLoggedInAs($account);
         $I->amOnPage('/category/create');
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
         ];
         $category = CategoryFactory::createSequence($pharmaCategories)[0];
@@ -34,16 +33,17 @@ class CatCRUDCest
         $I->amOnPage('/category/1/delete');
         $I->seeResponseCodeIsSuccessful();
     }
+
     public function CreateACategory(ControllerTester $I)
     {
         $admin = AccountFactory::createOne(['roles' => ['ROLE_ADMIN']])->_real();
         $I->amLoggedInAs($admin);
-        ArticleFactory::createOne(['name'=>'art1']);
-        ArticleFactory::createOne(['name'=>'art2']);
+        ArticleFactory::createOne(['name' => 'art1']);
+        ArticleFactory::createOne(['name' => 'art2']);
         $I->amOnPage('/category/create');
         $I->submitForm('form',
             ['category[name]' => 'Analgesics',
-                'category[articles]' => [1,2]],
+                'category[articles]' => [1, 2]],
             'submitButton');
         $I->seeCurrentRouteIs('app_category');
         $I->see('Analgesics', '.category');
@@ -56,10 +56,10 @@ class CatCRUDCest
     {
         $admin = AccountFactory::createOne(['roles' => ['ROLE_ADMIN']])->_real();
         $I->amLoggedInAs($admin);
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
         ];
-        ArticleFactory::createOne(['name'=>'art1']);
+        ArticleFactory::createOne(['name' => 'art1']);
         $category = CategoryFactory::createSequence($pharmaCategories)[0];
         $I->amOnPage('/category');
         $I->see('Analgesics', '.category');
@@ -81,18 +81,17 @@ class CatCRUDCest
     {
         $admin = AccountFactory::createOne(['roles' => ['ROLE_ADMIN']])->_real();
         $I->amLoggedInAs($admin);
-        $article = ArticleFactory::createOne(['name'=>'art1']);
-        CategoryFactory::createOne(['name'=>'Analgesics', 'articles'=>[$article]]);
+        $article = ArticleFactory::createOne(['name' => 'art1']);
+        CategoryFactory::createOne(['name' => 'Analgesics', 'articles' => [$article]]);
 
         $I->amOnPage('/category');
         $I->see('Analgesics', '.category');
         $I->amOnPage('/category/1/delete');
-        $I->submitForm('form',[
-            'form[delete]'=>''
+        $I->submitForm('form', [
+            'form[delete]' => '',
         ],
             'submitButton');
         $I->seeCurrentRouteIs('app_category');
         $I->dontSee('Analgesics', '.category');
-
     }
 }

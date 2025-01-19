@@ -13,20 +13,21 @@ class UnitFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $allArticle=$manager->getRepository(Article::class)->findAll();
+        $allArticle = $manager->getRepository(Article::class)->findAll();
 
         foreach ($allArticle as $article) {
             UnitFactory::createOne(
-                ["article" => $article]
+                ['article' => $article]
             );
         }
-        UnitFactory::createMany(20,function (){
+        UnitFactory::createMany(20, function () {
             return [
-                "article"=> ArticleFactory::random()
+                'article' => ArticleFactory::random(),
             ];
         });
     }
-        public function getDependencies(): array
+
+    public function getDependencies(): array
     {
         return [
             ArticleFixtures::class,

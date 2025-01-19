@@ -33,8 +33,8 @@ final class CartLineFactory extends PersistentProxyObjectFactory
     {
         return [
             'article' => ArticleFactory::random(),
-            'quantity' => rand(1,10),
-            'client'=> CLientFactory::random(),
+            'quantity' => rand(1, 10),
+            'client' => CLientFactory::random(),
         ];
     }
 

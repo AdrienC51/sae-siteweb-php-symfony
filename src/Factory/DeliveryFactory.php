@@ -12,8 +12,6 @@ final class DeliveryFactory extends PersistentProxyObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
-     *
-     *
      */
     public function __construct()
     {
@@ -26,13 +24,11 @@ final class DeliveryFactory extends PersistentProxyObjectFactory
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
-     *
-     *
      */
     protected function defaults(): array|callable
     {
         return [
-            'delivery_date' => self::faker()->dateTimeBetween('-3 months','+6 month'),
+            'delivery_date' => self::faker()->dateTimeBetween('-3 months', '+6 month'),
         ];
     }
 

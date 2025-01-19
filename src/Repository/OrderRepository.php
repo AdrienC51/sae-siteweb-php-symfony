@@ -15,10 +15,12 @@ class OrderRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Order::class);
     }
+
     public function findAllOrderedByNewestDate()
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.orderDate', 'DESC');
+
         return $qb->getQuery()->execute();
     }
     //    /**

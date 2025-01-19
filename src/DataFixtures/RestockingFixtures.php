@@ -10,11 +10,12 @@ class RestockingFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        RestockingFactory::createMany(30,function (){
-             $status = rand(0, 1) === 0 ? "Pending" : "Received";
+        RestockingFactory::createMany(30, function () {
+            $status = 0 === rand(0, 1) ? 'Pending' : 'Received';
+
             return [
                 'status' => $status,
             ];
-        });;
+        });
     }
 }

@@ -13,10 +13,12 @@ class CartLineFixtures extends Fixture implements DependentFixtureInterface
     {
         CartLineFactory::createMany(50);
     }
-    public function getDependencies(){
+
+    public function getDependencies()
+    {
         return [
             ArticleFixtures::class,
-            ClientFixtures::class
+            ClientFixtures::class,
         ];
     }
 }

@@ -22,7 +22,8 @@ class UnitRepository extends ServiceEntityRepository
             ->join('u.article', 'a')
             ->where('a.id = :articleId')
             ->setParameter('articleId', $articleId)
-            ->andWhere("CURRENT_TIMESTAMP() > u.expirationDate");
+            ->andWhere('CURRENT_TIMESTAMP() > u.expirationDate');
+
         return $qb->getQuery()->execute();
     }
 

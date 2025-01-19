@@ -2,7 +2,6 @@
 
 namespace App\Factory;
 
-use App\DataFixtures\CategoryFixtures;
 use App\Entity\Article;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
@@ -44,8 +43,9 @@ final class ArticleFactory extends PersistentProxyObjectFactory
             'Saline Nasal Spray ',
             'Antihistamine Tablets ',
         ];
-        $number=rand(100,500);
-        $name=self::faker()->randomElement($pharmaNames).$number."mg";
+        $number = rand(100, 500);
+        $name = self::faker()->randomElement($pharmaNames).$number.'mg';
+
         return [
             'name' => $name,
             'price' => self::faker()->randomFloat(2, 5, 100),

@@ -33,8 +33,8 @@ final class StockEvolutionFactory extends PersistentProxyObjectFactory
     {
         return [
             'article' => ArticleFactory::random(),
-            'evolutionDate' => self::faker()->dateTimeBetween("-1 year","+5 year"),
-            'quantity' => rand(20,150),
+            'evolutionDate' => self::faker()->dateTimeBetween('-1 year', '+5 year'),
+            'quantity' => rand(20, 150),
         ];
     }
 

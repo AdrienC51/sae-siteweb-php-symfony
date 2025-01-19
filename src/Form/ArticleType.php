@@ -35,7 +35,7 @@ class ArticleType extends AbstractType
                         'maxSize' => '5M',
                         'mimeTypes' => ['image/jpeg', 'image/png'],
                         'mimeTypesMessage' => 'Please upload a valid JPEG or PNG image.',
-                    ])
+                    ]),
                 ],
                 'required' => false,
             ])

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\Order;
 
 use App\Factory\AccountFactory;
@@ -50,8 +49,5 @@ class IndexCest
         $I->amOnPage('/order');
         $I->click('Order n°1');
         $I->seeCurrentRouteIs('app_order_show', ['id' => 1]);
-
-
     }
-
 }

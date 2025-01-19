@@ -4,15 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\KeyWord;
 use App\Repository\ArticleRepository;
-use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use function PHPUnit\Framework\throwException;
 
 class KeyWordCrudController extends AbstractCrudController
 {
@@ -22,6 +19,7 @@ class KeyWordCrudController extends AbstractCrudController
     {
         $this->articleRepository = $articleRepository;
     }
+
     public static function getEntityFqcn(): string
     {
         return KeyWord::class;
@@ -38,6 +36,7 @@ class KeyWordCrudController extends AbstractCrudController
             }]),
         ];
     }
+
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->setUpdateArticles($entityInstance);
@@ -50,14 +49,13 @@ class KeyWordCrudController extends AbstractCrudController
         $this->setUpdateArticles($entityInstance);
         parent::persistEntity($entityManager, $entityInstance);
         $entityManager->flush();
-
     }
 
     public function setUpdateArticles(KeyWord $keyWord): void
     {
         $allArticles = $this->articleRepository->findAll();
 
-        if (isset($this->getContext()->getRequest()->get("KeyWord")['articles'])) {
+        if (isset($this->getContext()->getRequest()->get('KeyWord')['articles'])) {
             $articlesId = $this->getContext()->getRequest()->get('KeyWord')['articles'];
 
             foreach ($allArticles as $article) {
@@ -75,7 +73,6 @@ class KeyWordCrudController extends AbstractCrudController
                     $article->removeKeyWord($keyWord);
                 }
             }
-
         }
     }
 }

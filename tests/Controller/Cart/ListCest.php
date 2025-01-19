@@ -13,9 +13,9 @@ class ListCest
         $account = AccountFactory::createOne([
             'firstname' => 'John',
             'lastname' => 'Doe',
-            'email' => 'john@example.com'
+            'email' => 'john@example.com',
         ]);
-        
+
         ClientFactory::createOne(['account' => $account]);
 
         $I->amOnPage('/cart');

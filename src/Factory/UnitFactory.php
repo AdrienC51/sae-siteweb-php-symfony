@@ -31,7 +31,8 @@ final class UnitFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
-        $entryDate=self::faker()->dateTime();
+        $entryDate = self::faker()->dateTime();
+
         return [
             'entryDate' => $entryDate,
             'expirationDate' => self::faker()->dateTimeBetween($entryDate, '+1 year'),

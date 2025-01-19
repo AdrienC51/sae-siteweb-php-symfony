@@ -31,14 +31,15 @@ final class OrderFactory extends PersistentProxyObjectFactory
      */
     protected function defaults(): array|callable
     {
-        $status=["Valide","En livraison","Livre"];
+        $status = ['Valide', 'En livraison', 'Livre'];
+
         return [
             'client' => ClientFactory::random(),
             'destAddress' => self::faker()->streetAddress(),
             'destCity' => self::faker()->city(),
-            'delivery'=> DeliveryFactory::random(),
-            'orderDate' => self::faker()->dateTimeBetween("-5 month", "now"),
-            'destPostCode' => (string)self::faker()->postcode(),
+            'delivery' => DeliveryFactory::random(),
+            'orderDate' => self::faker()->dateTimeBetween('-5 month', 'now'),
+            'destPostCode' => (string) self::faker()->postcode(),
             'status' => strtoupper($status[array_rand($status)]),
         ];
     }

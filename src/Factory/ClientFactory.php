@@ -2,7 +2,6 @@
 
 namespace App\Factory;
 
-use App\Entity\Account;
 use App\Entity\Client;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
@@ -16,7 +15,6 @@ final class ClientFactory extends PersistentProxyObjectFactory
      *
      * @todo inject services if required
      */
-
     public function __construct()
     {
     }
@@ -35,7 +33,7 @@ final class ClientFactory extends PersistentProxyObjectFactory
     {
         return [
             'account' => AccountFactory::createOne(),
-            'city'=>self::faker()->city(),
+            'city' => self::faker()->city(),
             'post_code' => (string) self::faker()->postcode(),
             'address' => self::faker()->streetAddress,
             'phone' => self::faker()->phoneNumber(),

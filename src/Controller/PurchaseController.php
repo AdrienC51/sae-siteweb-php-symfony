@@ -27,6 +27,7 @@ class PurchaseController extends AbstractController
 
         if (empty($cardNumber) || empty($expiryDate) || empty($cvv) || empty($cardHolder)) {
             $this->addFlash('error', 'All fields must be completed.');
+
             return $this->redirectToRoute('app_purchase');
         }
 
@@ -41,4 +42,3 @@ class PurchaseController extends AbstractController
         ]);
     }
 }
-

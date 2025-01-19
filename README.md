@@ -21,7 +21,7 @@ For a local use, we have described below all the needs to make that work.
 
 A version of php >= 8.1.
 
-## Installing 'Symfony'
+## Installing `Symfony`
 
 ### Linux
 
@@ -35,27 +35,58 @@ Run 'scoop install symfony-cli' with [Scoop](https://scoop.sh/) to install [Symf
 
 Install Composer [here](https://getcomposer.org/).
 
-# Start the projet with 'Composer'
+# Start the projet with `Composer`
 
-Start with "composer install" to use this project.
+To use this project, start with
+```bash
+composer install
+```
 
 # Local Web Server
 
-To start the local web server 'composer start'.
+To start the local web server : 
+```bash
+composer start
+```
+
+Access to it with this URL : <http://localhost:8000/>
+
 
 # Code checking
 
-We run the command to check the code with php cs fix 'composer test:phpcs'.
-We run the command to check the code with twig cs fix 'composer test:twigcs'.
-We test all the controllers and twigs with codeception 'composer test:codeception'.
+- We run this command to check the code with php cs fix : 
+```bash
+composer test:phpcs
+```
+- We run this command to check the code with twig cs fix :
+```bash
+composer test:twigcs
+```
+- We test all the controllers and twigs with codeception :
+```bash
+composer test:codeception
+```
 
-To run them all : 'composer test'.
+To run them all :
+```bash
+composer test
+```
 
 # Code fix
 
-We run the command to correct the code with php cs fix 'composer fix:phpcs'.
-We run the command to correct the code with twig cs fix 'composer fix:twigcs'.
+- We run this command to correct the code with php cs fix :
+```bash
+composer fix:phpcs
+```
+- We run this command to correct the code with twig cs fix :
+```bash
+composer fix:twigcs
+```
 
 # Database
 
-Create your .env.local file and connect to your database then run 'composer db' to create the database and create dummy data.
+Create your .env.local file and connect to your database then run
+```bash
+composer db
+```
+to create the database and create dummy data.

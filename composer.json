@@ -104,6 +104,19 @@
             "@auto-scripts"
         ]
     },
+    "scripts-descriptions": {
+        "start": "Launches the test web server without execution time restrictions",
+        "test:phpcs": "Test/Check all code with PHP CS Fixer",
+        "fix:phpcs": "Fix all code with PHP CS Fixer",
+        "test:twigcs": "Test/Check all code with Twig CS Fixer",
+        "fix:twigcs": "Fix all code with Twig CS Fixer",
+        "test:codeception": "Runs a series of tests on the codes after initializing the test database",
+        "test": "Run all tests (phpcs, twigcs, codeception)",
+        "db": "Destroye the existing database, make a new one, applies migrations and generates dummy data in the new database",
+        "auto-scripts": "Install symfony-cmd",
+        "post-install-cmd": "Automatically call after the install command, launches auto-scripts",
+        "post-update-cmd": "Automatically call after the update command, launches auto-scripts"
+    },
     "conflict": {
         "symfony/symfony": "*"
     },

@@ -14,7 +14,7 @@ arrow_circle_left
                 <div class="d-flex justify-content-between">
                 <h2>Units in stock</h2>
                 {{ form_start(delete) }}
-                {{ form_widget(delete.delete, { 'label': 'Delete expired', 'attr': {'class':'btn btn-danger'} }) }}
+                {{ form_widget(delete.delete, {label: 'Delete expired', attr: {class: 'btn btn-danger'}}) }}
 
                 {{ form_end(delete) }}
                 </div>
@@ -29,14 +29,14 @@ arrow_circle_left
                         </td>
                         <td>{{ 'now'|date('d/m/Y') }}
                         </td>
-                        <td>{{ form_errors(form.expirationDate) }}{{ form_widget(form.expirationDate, {'attr': {'class': 'form-control'}}) }}
+                        <td>{{ form_errors(form.expirationDate) }}{{ form_widget(form.expirationDate, {attr: {class: 'form-control'}}) }}
                         </td>
                         {{ form_end(form) }}
 
                     </tr>
                     {% for unit in article.articlesDetail %}
                         <tr class="order-line">
-                            <td>{{unit.id }}</td>
+                            <td>{{ unit.id }}</td>
                             <td>{{ unit.entryDate|date('d/m/Y') }}</td>
                             <td {% if unit.isExpired %}class="bg-danger"{% endif %}>{{ unit.expirationDate|date('d/m/Y') }}</td>
                         </tr>
@@ -55,7 +55,7 @@ arrow_circle_left
                 </tr>
                 {% for evolution in se %}
                     <tr class="order-line">
-                        <td class="{% if evolution.type == "IN" %}bg-success">+{% else %}bg-danger">-{% endif %}</td>
+                        <td class="{% if evolution.type == 'IN' %}bg-success">+{% else %}bg-danger">-{% endif %}</td>
                         <td>{{ evolution.quantity }}</td>
                         <td>{{ evolution.evolutionDate|date('d/m/Y') }}</td>
                     </tr>

@@ -30,7 +30,7 @@
                 </tr>
             {% for restockingLine in restocking.restockinglines %}
                 <tr class="order-line">
-                    <td>{{restockingLine.quantity }}</td>
+                    <td>{{ restockingLine.quantity }}</td>
                     <td>{{ restockingLine.article.name }}</td>
                     <td>{{ restockingLine.price }}€</td>
                 </tr>

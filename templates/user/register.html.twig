@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% set title = "Make your new account !" %}
+{% set title = 'Make your new account !' %}
 
 {% block title %}
     {{ title }}
@@ -10,6 +10,6 @@
 <br>
 <div class="box">
     <h1>{{ title }}</h1>
-    {{ include('user/_form.html.twig', {submit_label: 'Create', form: form, button: 'w-100 p-3 btn btn-success btn-primary btn-lg btn-block'}, with_context = false) }}
+    {{ include('user/_form.html.twig', {submit_label: 'Create', form: form, button: 'w-100 p-3 btn btn-success btn-primary btn-lg btn-block'}, with_context=false) }}
 </div>
 {% endblock %}

@@ -8,24 +8,23 @@
     </div>
     <div class="boxlist">
         {% for restock in restocks %}
-            <a class="orderinfo" href="{{ path('app_restocking_show',{id:restock.id}) }}">
-                <h3 class="{%if restock.status == "Received" %}delivered{% else %}pending{% endif %}">Restocking n°{{ restock.id }} ({{ restock.status }})</h3>
+            <a class="orderinfo" href="{{ path('app_restocking_show', {id: restock.id}) }}">
+                <h3 class="{% if restock.status == 'Received' %}delivered{% else %}pending{% endif %}">Restocking n°{{ restock.id }} ({{ restock.status }})</h3>
                 <div class="flex-row d-flex column-gap-1">
                                 <span class="material-symbols-outlined">
 event_available
 </span>
-                    <p> {{ restock.restockDate|date('d/m/Y')}}</p>
+                    <p> {{ restock.restockDate|date('d/m/Y') }}</p>
                 </div>
                 <div class="flex-row d-flex column-gap-1">
                                 <span class="material-symbols-outlined">
 paid
 </span>
-                    <p> {{ restock.price}} €</p>
+                    <p> {{ restock.price }} €</p>
 
                 </div>
             </a>
 
-        {% endfor%}
+        {% endfor %}
     </div>
 {% endblock %}
-

@@ -120,7 +120,7 @@ class ArticleRepository extends ServiceEntityRepository
             } elseif (!empty($pMin) && empty($pMax)) {
                 $query = $query->andWhere('a.price >= :pMin')
                     ->setParameter('pMin', (float) $pMin);
-            } elseif(empty($pMin) && !empty($pMax)) {
+            } elseif (empty($pMin) && !empty($pMax)) {
                 $query = $query->andWhere('a.price <= :pMax')
                     ->setParameter('pMax', (float) $pMax);
             }

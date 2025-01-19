@@ -7,7 +7,6 @@ use App\Form\CategoryType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,14 +23,17 @@ class CategoryController extends AbstractController
     {
         $this->articleRepository = $articleRepository;
     }
+
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAllOrderedByNameWithArticleCount();
+
         return $this->render('category/index.html.twig', ['categories' => $categories]);
     }
+
     #[Route('/category/{id}', name: 'app_category_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(Category $category, ArticleRepository $articleRepository, #[MapQueryParameter] string $search = '', #[MapQueryParameter] string $prix_min = '', #[MapQueryParameter] string $prix_max = '' ): Response
+    public function show(Category $category, ArticleRepository $articleRepository, #[MapQueryParameter] string $search = '', #[MapQueryParameter] string $prix_min = '', #[MapQueryParameter] string $prix_max = ''): Response
     {
         $recherche = $search;
         $articles = $articleRepository->searchWithCategory($category->getId(), $search, $prix_min, $prix_max);
@@ -62,12 +64,11 @@ class CategoryController extends AbstractController
         }
 
         return $this->render('category/create.html.twig', ['category' => $category, 'form' => $form]);
-
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/category/{id}/update', name: 'app_category_update',requirements: ['id' => '\d+'])]
-    public function update(Category $category,Request $request,EntityManagerInterface $entityManager): Response
+    #[Route('/category/{id}/update', name: 'app_category_update', requirements: ['id' => '\d+'])]
+    public function update(Category $category, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -79,12 +80,12 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_category');
         }
 
-        return $this->render('category/update.html.twig', ['category'=>$category,'form'=>$form]);
+        return $this->render('category/update.html.twig', ['category' => $category, 'form' => $form]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/category/{id}/delete', name: 'app_category_delete',requirements: ['id' => '\d+'])]
-    public function delete(Category $category,Request $request,EntityManagerInterface $entityManager): Response
+    #[Route('/category/{id}/delete', name: 'app_category_delete', requirements: ['id' => '\d+'])]
+    public function delete(Category $category, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder($category)
             ->add('delete', SubmitType::class)
@@ -100,13 +101,15 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('app_category');
         }
+
         return $this->render('category/delete.html.twig', ['category' => $category, 'form' => $form]);
     }
+
     public function setUpdateArticles(Category $category, Request $request): void
     {
         $allArticles = $this->articleRepository->findAll();
 
-        if (isset($request->get("category")['articles'])) {
+        if (isset($request->get('category')['articles'])) {
             $articlesId = $request->get('category')['articles'];
 
             foreach ($allArticles as $article) {
@@ -124,7 +127,6 @@ class CategoryController extends AbstractController
                     $article->removeCategory($category);
                 }
             }
-
         }
     }
 }

@@ -26,12 +26,12 @@
             {% for article in articles %}
                 <div class="article_stock">
                     <div class="article_info_stock"> <img alt="[article image]" src="{{ article.picture }}" width="64" height="64"> </div>
-                    <div class="article_info_stock"> <a id="stock" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a> </div>
+                    <div class="article_info_stock"> <a id="stock" href="{{ path('app_article_show', {id: article.id}) }}">{{ article.name }}</a> </div>
                     <div class="article_info_stock"> {{ article.price }}€ </div>
-                    <a class="article_info_stock nav-link d-flex justify-content-center align-items-start column-gap-1" href="{{ path("app_stock_detail",{id:article.id}) }}"> {{ article.getStock() }} unit(s) <span class="material-symbols-outlined"> arrow_circle_right</span></a>
+                    <a class="article_info_stock nav-link d-flex justify-content-center align-items-start column-gap-1" href="{{ path('app_stock_detail', {id: article.id}) }}"> {{ article.getStock() }} unit(s) <span class="material-symbols-outlined"> arrow_circle_right</span></a>
                     <div class="article_info_stock">
-                        <a id="stock_edit" href="{{ path('app_article_update', {'id': article.id}) }}"> <span class="material-symbols-outlined">edit</span></a>
-                        <a id="stock_del" href="{{ path('app_article_delete', {'id': article.id}) }}"> <span class="material-symbols-outlined">delete</span></a>
+                        <a id="stock_edit" href="{{ path('app_article_update', {id: article.id}) }}"> <span class="material-symbols-outlined">edit</span></a>
+                        <a id="stock_del" href="{{ path('app_article_delete', {id: article.id}) }}"> <span class="material-symbols-outlined">delete</span></a>
                     </div>
                 </div>
             {% endfor %}

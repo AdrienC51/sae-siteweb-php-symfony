@@ -11,7 +11,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
-
 class DeliveryCrudController extends AbstractCrudController
 {
     private OrderRepository $orderRepository;
@@ -20,6 +19,7 @@ class DeliveryCrudController extends AbstractCrudController
     {
         $this->orderRepository = $orderRepository;
     }
+
     public static function getEntityFqcn(): string
     {
         return Delivery::class;
@@ -30,9 +30,9 @@ class DeliveryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             DateField::new('deliveryDate'),
-            AssociationField::new('orders')->setFormTypeOptions(['choice_label'=> function (Order $order): string {
+            AssociationField::new('orders')->setFormTypeOptions(['choice_label' => function (Order $order): string {
                 return $order->getId().'-'.$order->getOrderDate()->format('d/m/Y').'-'.$order->getClient()->getAccount()->getFirstName().' '.$order->getClient()->getAccount()->getLastName();
-            }])
+            }]),
         ];
     }
 
@@ -48,14 +48,13 @@ class DeliveryCrudController extends AbstractCrudController
         $this->setUpdateOrders($entityInstance);
         parent::persistEntity($entityManager, $entityInstance);
         $entityManager->flush();
-
     }
 
     public function setUpdateOrders(Delivery $delivery): void
     {
         $allOrders = $this->orderRepository->findAll();
 
-        if (isset($this->getContext()->getRequest()->get("Delivery")['orders'])) {
+        if (isset($this->getContext()->getRequest()->get('Delivery')['orders'])) {
             $ordersId = $this->getContext()->getRequest()->get('Delivery')['orders'];
             foreach ($allOrders as $order) {
                 if ($order->getDelivery() === $delivery) {
@@ -72,9 +71,6 @@ class DeliveryCrudController extends AbstractCrudController
                     $order->setDelivery(null);
                 }
             }
-
         }
     }
-
-
 }

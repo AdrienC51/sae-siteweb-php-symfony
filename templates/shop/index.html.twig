@@ -7,11 +7,11 @@
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" value="{{ prix_min }}" placeholder="Min price" aria-label="Recherche" name="prix_min">
             <input class="form-control me-2" type="search" value="{{ prix_max }}" placeholder="Max price" aria-label="Recherche" name="prix_max">
-            <button class="btn btn-outline-success" type="submit" formaction="{% if categoryId is defined %}{{ path('app_category_show',{id:categoryId}) }}{% else %}{{ path('app_shop') }}{% endif %}">Filter</button>
+            <button class="btn btn-outline-success" type="submit" formaction="{% if categoryId is defined %}{{ path('app_category_show', {id: categoryId}) }}{% else %}{{ path('app_shop') }}{% endif %}">Filter</button>
         </form>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" value="{{ search }}" placeholder="Search for a product" aria-label="Search" name="search">
-            <button class="btn btn-outline-success" type="submit" formaction="{% if categoryId is defined %}{{ path('app_category_show',{id:categoryId}) }}{% else %}{{ path('app_shop') }}{% endif %}">Search</button>
+            <button class="btn btn-outline-success" type="submit" formaction="{% if categoryId is defined %}{{ path('app_category_show', {id: categoryId}) }}{% else %}{{ path('app_shop') }}{% endif %}">Search</button>
         </form>
         <div class="articles_shop">
             {% for article in articles %}
@@ -20,11 +20,11 @@
                         <img alt="[article image]" src="{{ article.picture }}" width="200" height="200">
                     </div>
                     <div class="article_info_shop">
-                        <span> <a class="article_name_shop" id="shop" href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a>   </span>
+                        <span> <a class="article_name_shop" id="shop" href="{{ path('app_article_show', {id: article.id}) }}">{{ article.name }}</a>   </span>
                         <span> {{ article.price }}€ </span>
                     </div>
                     <div class="article_to_cart_shop">
-                        <a id="shop" href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+                        <a id="shop" href="{{ path('app_cart_add', {id: article.id}) }}"><span class="material-symbols-outlined">shopping_cart</span></a>
                     </div>
                 </div>
             {% endfor %}

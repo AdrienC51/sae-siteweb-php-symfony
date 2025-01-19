@@ -22,7 +22,6 @@ class Restocking
     #[ORM\Column(length: 20)]
     private ?string $status = null;
 
-
     /**
      * @var Collection<int, RestockingLine>
      */
@@ -104,12 +103,14 @@ class Restocking
 
         return $this;
     }
+
     public function getPrice()
     {
         $total = 0.0;
         foreach ($this->restockingLines as $restockLine) {
             $total += $restockLine->getPrice();
         }
+
         return $total;
     }
 }

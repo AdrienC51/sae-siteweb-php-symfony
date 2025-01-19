@@ -15,6 +15,7 @@ class StockEvolutionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, StockEvolution::class);
     }
+
     public function findByArticleIdOrderedByDate(int $articleId)
     {
         $qb = $this->createQueryBuilder('se')
@@ -22,6 +23,7 @@ class StockEvolutionRepository extends ServiceEntityRepository
             ->where('a.id = :articleId')
             ->setParameter('articleId', $articleId)
             ->orderBy('se.evolutionDate', 'DESC');
+
         return $qb->getQuery()->execute();
     }
 

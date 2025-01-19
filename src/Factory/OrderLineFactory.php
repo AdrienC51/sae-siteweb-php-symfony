@@ -33,7 +33,7 @@ final class OrderLineFactory extends PersistentProxyObjectFactory
     {
         return [
             'article' => ArticleFactory::random(),
-            'quantity' => rand(1,15),
+            'quantity' => rand(1, 15),
         ];
     }
 

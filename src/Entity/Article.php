@@ -339,15 +339,15 @@ class Article
     public function getAvailableQuantity(): int
     {
         $availableQuantity = 0;
-        
+
         foreach ($this->evolutions as $evolution) {
-            if ($evolution->getType() === 'IN') {
+            if ('IN' === $evolution->getType()) {
                 $availableQuantity += $evolution->getQuantity();
             } else {
                 $availableQuantity -= $evolution->getQuantity();
             }
         }
-        
+
         return $availableQuantity;
     }
 }

@@ -15,10 +15,12 @@ class RestockingRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Restocking::class);
     }
+
     public function findAllOrderedByNewestDate()
     {
         $qb = $this->createQueryBuilder('r')
             ->orderBy('r.restockDate', 'DESC');
+
         return $qb->getQuery()->execute();
     }
 

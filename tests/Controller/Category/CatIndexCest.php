@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\Category;
 
 use App\Factory\AccountFactory;
@@ -11,7 +10,7 @@ class CatIndexCest
 {
     public function showCategoryList(ControllerTester $I)
     {
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
             ['name' => 'Antibiotics'],
             ['name' => 'Antihistamines'],
@@ -27,7 +26,7 @@ class CatIndexCest
     // tests
     public function clickOnCategory(ControllerTester $I)
     {
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
             ['name' => 'Antibiotics'],
             ['name' => 'Antihistamines'],
@@ -43,7 +42,6 @@ class CatIndexCest
 
     public function ClickOnAddCategory(ControllerTester $I)
     {
-
         $I->amOnPage('/category');
         $I->seeResponseCodeIsSuccessful();
         $I->dontSee('New Category', '.category');
@@ -54,9 +52,10 @@ class CatIndexCest
         $I->click('New Category');
         $I->seeCurrentRouteIs('app_category_create');
     }
+
     public function ClickOnEdit(ControllerTester $I)
     {
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
         ];
         CategoryFactory::createSequence($pharmaCategories);
@@ -70,9 +69,10 @@ class CatIndexCest
         $I->click('edit');
         $I->seeCurrentRouteIs('app_category_update', ['id' => 1]);
     }
+
     public function ClickOnDelete(ControllerTester $I)
     {
-        $pharmaCategories =  [
+        $pharmaCategories = [
             ['name' => 'Analgesics'],
         ];
         CategoryFactory::createSequence($pharmaCategories);

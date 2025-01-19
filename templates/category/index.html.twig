@@ -21,7 +21,7 @@ add_circle
         {% set category = categoryInfo['category'] %}
         {% set count = categoryInfo['count'] %}
         <div class="d-flex w-100 category">
-            {% if is_granted('ROLE_ADMIN')%}
+            {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('app_category_update', {id: category.id}) }}" class="nav-link">
                     <span class="material-symbols-outlined text-warning">
                         edit
@@ -33,7 +33,7 @@ add_circle
                     </span>
                 </a>
             {% endif %}
-            <a href= "{{ path('app_category_show',{id:category.id}) }}" class=" nav-link w-100 d-flex justify-content-between">
+            <a href= "{{ path('app_category_show', {id: category.id}) }}" class=" nav-link w-100 d-flex justify-content-between">
             {{ category.getName() }}
             <span class="badge text-bg-success rounded-pill">
                 {{ count }}
@@ -41,9 +41,7 @@ add_circle
         </a>
         </div>
 
-
-
-    {%endfor %}
+    {% endfor %}
     </div>
 
 {% endblock %}

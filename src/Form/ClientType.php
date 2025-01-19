@@ -2,29 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Unit;
+use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UnitType extends AbstractType
+class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
-            ->add('expirationDate', DateType::class, [
-                'empty_data' => '',
-                'label' => false,
-            ])
+            ->add('address', null, ['empty_data' => ''])
+            ->add('city', null, ['label' => 'Password'])
+            ->add('postcode', null, ['empty_data' => ''])
+            ->add('phone', null, ['empty_data' => ''])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Unit::class,
+            'data_class' => Client::class,
         ]);
     }
 }

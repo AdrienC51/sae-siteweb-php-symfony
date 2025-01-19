@@ -15,6 +15,13 @@
     {% else %}
         <div class="box">
         <h1>{{ title }}</h1>
-        {{ include('user/_form.html.twig', {submit_label: 'Modify', form: form, button: 'w-100 p-3 btn btn-warning btn-primary btn-lg btn-block', title: 'Edition of {{ account.lastname }}, {{ account.firstname }}'}, with_context=false) }}
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.address, {label: 'Address'}) }}
+        {{ form_row(form.city, {label: 'City'}) }}
+        {{ form_row(form.postcode, {label: 'PostCode'}) }}
+        {{ form_row(form.phone, {label: 'Phone'}) }}
+        <button type="submit" class="w-100 p-3 btn btn-warning btn-primary btn-lg btn-block">update</button>
+        {{ form_end(form) }}
     {% endif %}
 {% endblock %}

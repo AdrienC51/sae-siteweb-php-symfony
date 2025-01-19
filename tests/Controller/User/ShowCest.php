@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\User;
 
 use App\Factory\AccountFactory;
@@ -66,5 +65,4 @@ class ShowCest
         $I->amOnPage('/user/1');
         $I->see('Orders', 'h2');
     }
-
 }

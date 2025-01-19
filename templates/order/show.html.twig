@@ -43,7 +43,7 @@
                 </tr>
             {% for orderLine in order.orderlines %}
                 <tr class="order-line">
-                    <td>{{orderLine.quantity }}</td>
+                    <td>{{ orderLine.quantity }}</td>
                     <td>{{ orderLine.article.name }}</td>
                     <td>{{ orderLine.price }}€</td>
                 </tr>

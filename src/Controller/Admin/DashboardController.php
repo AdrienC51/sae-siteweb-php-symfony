@@ -53,20 +53,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('CRUD Cart Lines', 'fas fa-list', CartLine::class);
         yield MenuItem::linkToCrud('CRUD Restocking', 'fas fa-list', Restocking::class);
         yield MenuItem::linkToCrud('CRUD Restocking Lines', 'fas fa-list', RestockingLine::class);
-
-
-
-
-
-
-
-
     }
 
     public function configureAssets(): Assets
     {
         $assets = parent::configureAssets();
         $assets->addCssFile('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
         return $assets;
     }
 }

@@ -13,11 +13,12 @@ class RestockingLineFixtures extends Fixture implements DependentFixtureInterfac
     {
         RestockingLineFactory::createMany(40);
     }
+
     public function getDependencies(): array
     {
         return [
             ArticleFixtures::class,
-            RestockingFixtures::class
+            RestockingFixtures::class,
         ];
     }
 }

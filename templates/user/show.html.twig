@@ -16,13 +16,11 @@
             <li>{{ user.firstname }}</li>
             <li>{{ user.email }}</li>
             {% if user.client.id is defined %}
-                <li> {{ user.client.phone}}</li>
-                <li>{{ user.client.address}}, {{ user.client.city}} {{user.client.postcode}}</li>
-            {% else %}
-                <li>You don't have any client information (you never ordered)</li>
+                <li> {{ user.client.phone }}</li>
+                <li>{{ user.client.address }}, {{ user.client.city }} {{ user.client.postcode }}</li>
             {% endif %}
         </ul>
-        Change something ? <a href="{{ url('app_user_update', {id: user.id}) }}">Modify</a>
+        Change something ? <a href="{{ url('app_user_update', {id: user.id}) }}">Modify</a> {% if user.client.id is defined %}<a href="{{ url('app_user_update_client', {id: user.id}) }}">Change shipping information</a>{% endif %}
     </div>
     <div class="mb-3">
         Do you want to disconnect ? <a href="{{ path('app_logout') }}">Disconnection</a>
@@ -32,13 +30,13 @@
             <h2>Orders</h2>
             {% if user.client.orders is not empty %}
                 {% for order in user.client.orders %}
-                    <a class="orderinfo" href="{{ path('app_order_show',{id:order.id}) }}">
+                    <a class="orderinfo" href="{{ path('app_order_show', {id: order.id}) }}">
                         <h3>Order n°{{ order.id }} ({{ order.status }})</h3>
                         <div class="flex-row d-flex column-gap-1">
                                 <span class="material-symbols-outlined">
 event_available
 </span>
-                            <p> {{ order.orderdate|date('d/m/Y')}}</p>
+                            <p> {{ order.orderdate|date('d/m/Y') }}</p>
                         </div>
                         <div class="flex-row d-flex column-gap-1">
 
@@ -51,7 +49,7 @@ local_shipping
                                 <span class="material-symbols-outlined">
 paid
 </span>
-                            <p> {{ order.price}} €</p>
+                            <p> {{ order.price }} €</p>
 
                         </div>
                     </a>
@@ -61,7 +59,7 @@ paid
                     <h3>No order made yet</h3>
                 </div>
             {% endif %}
-        {% elseif is_granted('ROLE_ADMIN')%}
+        {% elseif is_granted('ROLE_ADMIN') %}
             <h2>Admin links</h2>
             <a href="{{ path('admin') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
 table_edit
@@ -75,9 +73,10 @@ forklift
             <a href="{{ path('app_stock') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
 inventory_2
 </span>Inventory<span class="material-symbols-outlined">arrow_circle_right</span></a>
+            <a href="{{ path('app_cart_list') }}" class="btn btn-primary me-md-1 d-flex justify-content-center w-100 column-gap-1" type="button"><span class="material-symbols-outlined">
+shopping_cart
+</span>Carts<span class="material-symbols-outlined">arrow_circle_right</span></a>
         {% endif %}
     </div>
     {% endif %}
 {% endblock %}
-
-

@@ -2,35 +2,40 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Entity\CartLine;
 use App\Repository\CartLineRepository;
 use App\Repository\ClientRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\CartLine;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class CartController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/cart', name: 'app_cart_list')]
     public function listClients(ClientRepository $clientRepository): Response
     {
         $clients = $clientRepository->findAll();
+
         return $this->render('cart/list.html.twig', [
-            'clients' => $clients
+            'clients' => $clients,
         ]);
     }
 
     #[Route('/cart/remove/{id}', name: 'app_cart_remove')]
     public function removeFromCart(
-        CartLine $cartLine, 
-        EntityManagerInterface $entityManager
+        CartLine $cartLine,
+        EntityManagerInterface $entityManager,
     ): Response {
         $clientId = $cartLine->getClient()->getId();
         $entityManager->remove($cartLine);
         $entityManager->flush();
-        
+
         return $this->redirectToRoute('app_cart', ['clientId' => $clientId]);
     }
 
@@ -38,13 +43,13 @@ class CartController extends AbstractController
     public function indexid(int $clientId, CartLineRepository $cartLineRepository, ClientRepository $clientRepository): Response
     {
         $client = $clientRepository->find($clientId);
-        
+
         if (!$client) {
             throw $this->createNotFoundException('Client non trouvé');
         }
-        
+
         $cartLines = $cartLineRepository->findBy(['client' => $client]);
-        
+
         $total = 0;
         foreach ($cartLines as $line) {
             $total += $line->getQuantity() * $line->getArticle()->getPrice();
@@ -53,7 +58,7 @@ class CartController extends AbstractController
         return $this->render('cart/index.html.twig', [
             'cartLines' => $cartLines,
             'total' => $total,
-            'client' => $client
+            'client' => $client,
         ]);
     }
 
@@ -62,27 +67,27 @@ class CartController extends AbstractController
         int $id,
         CartLineRepository $cartLineRepository,
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ): Response {
         dump($id);
-        
+
         $cartLine = $cartLineRepository->find($id);
-        dump($cartLine); 
-        
+        dump($cartLine);
+
         if (!$cartLine) {
-            throw $this->createNotFoundException('Ligne de panier non trouvée (ID: ' . $id . ')');
+            throw $this->createNotFoundException('Ligne de panier non trouvée (ID: '.$id.')');
         }
-        
+
         $quantity = (int) $request->request->get('quantity');
-        
+
         if ($quantity > 0) {
             $cartLine->setQuantity($quantity);
             $entityManager->persist($cartLine);
             $entityManager->flush();
         }
-        
+
         return $this->redirectToRoute('app_cart', [
-            'clientId' => $cartLine->getClient()->getId()
+            'clientId' => $cartLine->getClient()->getId(),
         ]);
     }
 
@@ -92,13 +97,28 @@ class CartController extends AbstractController
         ClientRepository $clientRepository,
     ): Response {
         $client = $clientRepository->find($clientId);
-        
+
         if (!$client) {
             throw $this->createNotFoundException('Client non trouvé');
         }
-        
+
         $this->addFlash('error', 'La création de commande n\'est pas encore implémentée');
-        
+
         return $this->redirectToRoute('app_cart', ['clientId' => $clientId]);
+    }
+
+    #[Route('/cart/add/{id}', name: 'app_cart_add', requirements: ['id' => '\d+'])]
+    public function addToCart(Article $article, EntityManagerInterface $entityManager)
+    {
+        if (null !== $this->getUser()->getClient()) {
+            $cartLine = new CartLine();
+            $cartLine->setClient($this->getUser()->getClient());
+            $cartLine->setArticle($article);
+            $cartLine->setQuantity(1);
+            $entityManager->persist($cartLine);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_shop');
     }
 }

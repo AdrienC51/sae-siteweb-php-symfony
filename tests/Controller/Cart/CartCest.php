@@ -14,17 +14,17 @@ class CartCest
         $client = ClientFactory::createOne();
         $article = ArticleFactory::createOne([
             'name' => 'Test Article',
-            'price' => 10.00
+            'price' => 10.00,
         ]);
-        
+
         CartLineFactory::createOne([
             'client' => $client,
             'article' => $article,
-            'quantity' => 2
+            'quantity' => 2,
         ]);
 
         // Tests
-        $I->amOnPage('/cart/' . $client->getId());
+        $I->amOnPage('/cart/'.$client->getId());
         $I->seeResponseCodeIsSuccessful();
         $I->see('Test Article');
         $I->see('10 €'); // Prix unitaire
@@ -36,18 +36,18 @@ class CartCest
         $client = ClientFactory::createOne();
         $article = ArticleFactory::createOne([
             'name' => 'Test Article',
-            'price' => 10.00
+            'price' => 10.00,
         ]);
-        
+
         $cartLine = CartLineFactory::createOne([
             'client' => $client,
             'article' => $article,
-            'quantity' => 1
+            'quantity' => 1,
         ]);
 
-        $I->amOnPage('/cart/' . $client->getId());
+        $I->amOnPage('/cart/'.$client->getId());
         $I->submitForm('form[action*="update"]', [
-            'quantity' => 3
+            'quantity' => 3,
         ]);
         $I->seeCurrentRouteIs('app_cart', ['clientId' => $client->getId()]);
         $I->see('30 €'); // Total ligne après mise à jour
@@ -58,15 +58,15 @@ class CartCest
         $client = ClientFactory::createOne();
         $article = ArticleFactory::createOne([
             'name' => 'Test Article',
-            'price' => 10.00
-        ]);
-        
-        $cartLine = CartLineFactory::createOne([
-            'client' => $client,
-            'article' => $article
+            'price' => 10.00,
         ]);
 
-        $I->amOnPage('/cart/' . $client->getId());
+        $cartLine = CartLineFactory::createOne([
+            'client' => $client,
+            'article' => $article,
+        ]);
+
+        $I->amOnPage('/cart/'.$client->getId());
         $I->click('.btn-danger');
         $I->seeCurrentRouteIs('app_cart', ['clientId' => $client->getId()]);
         $I->dontSee('Test Article');

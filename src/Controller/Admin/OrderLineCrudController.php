@@ -9,8 +9,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class OrderLineCrudController extends AbstractCrudController
 {
@@ -24,13 +22,13 @@ class OrderLineCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             IntegerField::new('quantity'),
-            AssociationField::new('relatedOrder')->setFormTypeOptions(['choice_label'=> function (Order $order): string {
+            AssociationField::new('relatedOrder')->setFormTypeOptions(['choice_label' => function (Order $order): string {
                 return $order->getId().'-'.$order->getOrderDate()->format('d/m/Y').'-'.$order->getClient()->getAccount()->getFirstName().' '.$order->getClient()->getAccount()->getLastName();
             }])
             ->formatValue(function ($order) {
                 return $order->getId().'-'.$order->getOrderDate()->format('d/m/Y').'-'.$order->getClient()->getAccount()->getFirstName().' '.$order->getClient()->getAccount()->getLastName();
             }),
-            AssociationField::new('article')->setFormTypeOptions(['choice_label'=>'name', 'query_builder' => function (EntityRepository $entityRepository) {
+            AssociationField::new('article')->setFormTypeOptions(['choice_label' => 'name', 'query_builder' => function (EntityRepository $entityRepository) {
                 return $entityRepository->createQueryBuilder('a')
                     ->orderBy('a.name', 'ASC');
             }])

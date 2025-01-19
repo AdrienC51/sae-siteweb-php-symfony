@@ -48,18 +48,15 @@ person
             TextField::new('password')->hideOnIndex()->hideOnDetail()->setFormType(PasswordType::class)->setRequired(false)->setFormTypeOptions(['mapped' => false, 'empty_data' => ''])->setHtmlAttribute('autocomplete', 'new-password'),
             TextField::new('firstname'),
             TextField::new('lastname'),
-            AssociationField::new('client', 'ID CLient')->setFormTypeOptions(['disabled'=>'true','choice_label'=>'id'])->formatValue(function ($value) {
+            AssociationField::new('client', 'ID CLient')->setFormTypeOptions(['disabled' => 'true', 'choice_label' => 'id'])->formatValue(function ($value) {
                 if (!is_null($value)) {
                     return "client {$value->getId()}";
                 } else {
                     return 'admin';
                 }
-            })->setSortProperty('id')
-
-
+            })->setSortProperty('id'),
         ];
     }
-
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
@@ -83,5 +80,4 @@ person
             $account->setPassword($this->passwordHasher->hashPassword($account, $password));
         }
     }
-
 }

@@ -12,8 +12,6 @@ final class RestockingLineFactory extends PersistentProxyObjectFactory
 {
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
-     *
-     *
      */
     public function __construct()
     {
@@ -26,14 +24,12 @@ final class RestockingLineFactory extends PersistentProxyObjectFactory
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
-     *
-     *
      */
     protected function defaults(): array|callable
     {
         return [
             'article' => ArticleFactory::random(),
-            'quantity' => rand(20,150),
+            'quantity' => rand(20, 150),
             'restocking' => RestockingFactory::random(),
         ];
     }

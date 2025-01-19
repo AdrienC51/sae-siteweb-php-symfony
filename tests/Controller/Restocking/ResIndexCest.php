@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Controller\Restocking;
 
 use App\Factory\AccountFactory;
@@ -14,8 +13,9 @@ class ResIndexCest
     {
         $admin = AccountFactory::createOne(['roles' => ['ROLE_ADMIN']])->_real();
         $I->amLoggedInAs($admin);
-        RestockingFactory::createMany(5,function (){
-            $status = rand(0, 1) === 0 ? "Pending" : "Received";
+        RestockingFactory::createMany(5, function () {
+            $status = 0 === rand(0, 1) ? 'Pending' : 'Received';
+
             return [
                 'status' => $status,
             ];
@@ -43,16 +43,15 @@ class ResIndexCest
     {
         $admin = AccountFactory::createOne(['roles' => ['ROLE_ADMIN']])->_real();
         $I->amLoggedInAs($admin);
-        RestockingFactory::createMany(5,function (){
-            $status = rand(0, 1) === 0 ? "Pending" : "Received";
+        RestockingFactory::createMany(5, function () {
+            $status = 0 === rand(0, 1) ? 'Pending' : 'Received';
+
             return [
                 'status' => $status,
             ];
-        });        $I->amOnPage('/restocking');
+        });
+        $I->amOnPage('/restocking');
         $I->click('Restocking n°1');
         $I->seeCurrentRouteIs('app_restocking_show', ['id' => 1]);
-
-
     }
-
 }

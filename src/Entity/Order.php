@@ -175,6 +175,7 @@ class Order
         foreach ($this->orderLines as $orderLine) {
             $total += $orderLine->getPrice();
         }
+
         return $total;
     }
 }

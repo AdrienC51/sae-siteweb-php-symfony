@@ -13,8 +13,10 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
     {
         OrderFactory::createMany(50);
     }
-    public function getDependencies(){
-        return[
+
+    public function getDependencies()
+    {
+        return [
             ClientFixtures::class,
             DeliveryFixtures::class,
         ];

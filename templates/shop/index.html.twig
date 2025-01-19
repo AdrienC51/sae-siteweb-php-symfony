@@ -24,7 +24,7 @@
                         <span> {{ article.price }}€ </span>
                     </div>
                     <div class="article_to_cart_shop">
-                        <a id="shop" href=""><span class="material-symbols-outlined">shopping_cart</span></a>
+                        <a id="shop" href="{{ path('app_cart_add',{id:article.id}) }}"><span class="material-symbols-outlined">shopping_cart</span></a>
                     </div>
                 </div>
             {% endfor %}

@@ -335,4 +335,19 @@ class Article
     {
         return $this->articlesDetail->count();
     }
+
+    public function getAvailableQuantity(): int
+    {
+        $availableQuantity = 0;
+        
+        foreach ($this->evolutions as $evolution) {
+            if ($evolution->getType() === 'IN') {
+                $availableQuantity += $evolution->getQuantity();
+            } else {
+                $availableQuantity -= $evolution->getQuantity();
+            }
+        }
+        
+        return $availableQuantity;
+    }
 }

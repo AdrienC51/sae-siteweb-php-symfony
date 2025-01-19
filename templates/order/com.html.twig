@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">Commande confirmée !</h4>
+        <p>Votre commande a été enregistrée avec succès.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Détails de la commande</h5>
+            <p><strong>Date :</strong> {{ order.orderDate|date('d/m/Y') }}</p>
+            <p><strong>Status :</strong> {{ order.status }}</p>
+            <p><strong>Adresse de livraison :</strong><br>
+                {{ order.destAddress }}<br>
+                {{ order.destPostCode }} {{ order.destCity }}
+            </p>
+
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Quantité</th>
+                        <th>Prix unitaire</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for line in order.orderLines %}
+                        <tr>
+                            <td>{{ line.article.name }}</td>
+                            <td>{{ line.quantity }}</td>
+                            <td>{{ line.article.price }} €</td>
+                            <td>{{ line.quantity * line.article.price }} €</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end"><strong>Total :</strong></td>
+                        <td><strong>{{ total }} €</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{{ path('app_shop') }}" class="btn btn-primary">
+            Retourner à la boutique
+        </a>
+        <a href="{{ path('app_order_payment', {'orderId': order.id}) }}" class="btn btn-success">
+            Passer au paiement
+        </a>
+    </div>
+</div>
+{% endblock %}

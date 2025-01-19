@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    
+    <h1 class="mb-4">Panier du client : {{ client.account.firstname }} {{ client.account.lastname }}</h1>
+
+    {% if cartLines|length > 0 %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Prix unitaire</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for line in cartLines %}
+                    <tr>
+                        <td>{{ line.article.name }}</td>
+                        <td>{{ line.article.price }} €</td>
+                        <td>
+                            <form action="{{ path('app_cart_update', {'id': line.id}) }}" 
+                                  method="post" 
+                                  class="d-flex align-items-center">
+                                <!-- Debug ID: {{ line.id }} --> 
+                                <input type="number" 
+                                       name="quantity" 
+                                       value="{{ line.quantity }}"
+                                       min="1" 
+                                       class="form-control form-control-sm" 
+                                       style="width: 70px"
+                                       onchange="this.form.submit()">
+                            </form>
+                        </td> 
+                        <td>{{ line.quantity * line.article.price }} €</td>
+                        <td>
+                            <a href="{{ path('app_cart_remove', {'id': line.id}) }}" 
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Voulez-vous vraiment supprimer cet article ?')">
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end"><strong>Total du panier :</strong></td>
+                    <td><strong>{{ total }} €</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{{ path('app_shop') }}" class="btn btn-secondary me-2">Continuer mes achats</a>
+            <a href="{{ path('app_order_create', {'clientId': client.id}) }}" 
+               class="btn btn-success">
+                Passer la commande
+            </a>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Votre panier est vide.
+            <a href="{{ path('app_shop') }}" class="btn btn-primary ms-3">Retourner à la boutique</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -36,7 +36,7 @@
                     <a type="button" class="btn btn-outline-light" aria-current="page" href="{{ url('app_login') }}" style="margin-right: 10px"><span class="material-symbols-outlined">account_circle</span>Account</a>
                 </li>
                 <li class="nav-item">
-                    <a type="button" class="btn btn-outline-light" aria-current="page" href="{{ url('app_shop') }}"><span class="material-symbols-outlined">shopping_cart_checkout</span>Basket</a>
+                    <a type="button" class="btn btn-outline-light" aria-current="page" href="{% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.client is not empty %}{{ path('app_cart',{clientId:app.user.client.id})}}{% else %}{{ path('app_login')}}{% endif %}"><span class="material-symbols-outlined">shopping_cart_checkout</span>Basket</a>
                 </li>
             </ul>
         </div>

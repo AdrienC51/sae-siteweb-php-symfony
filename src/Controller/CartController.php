@@ -90,8 +90,6 @@ class CartController extends AbstractController
     public function createOrder(
         int $clientId,
         ClientRepository $clientRepository,
-        CartLineRepository $cartLineRepository,
-        EntityManagerInterface $entityManager
     ): Response {
         $client = $clientRepository->find($clientId);
         
@@ -99,8 +97,6 @@ class CartController extends AbstractController
             throw $this->createNotFoundException('Client non trouvé');
         }
         
-        // TODO: Implémenter la logique de création de commande
-        // Pour l'instant, on redirige vers le panier avec un message
         $this->addFlash('error', 'La création de commande n\'est pas encore implémentée');
         
         return $this->redirectToRoute('app_cart', ['clientId' => $clientId]);

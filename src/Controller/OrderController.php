@@ -138,4 +138,18 @@ class OrderController extends AbstractController
         return $this->redirectToRoute('app_payment_success', ['orderId' => $order->getId()]);
     }
 
+    #[Route('/order/payment/success/{orderId}', name: 'app_payment_success')]
+    public function paymentSuccess(int $orderId, OrderRepository $orderRepository): Response
+    {
+        $order = $orderRepository->find($orderId);
+        
+        if (!$order) {
+            throw $this->createNotFoundException('Commande non trouvée');
+        }
+        
+        return $this->render('order/payment_success.html.twig', [
+            'order' => $order
+        ]);
+    }
+
 }

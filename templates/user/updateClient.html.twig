@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% set title = "Edition of #{ account.lastname }, #{ account.firstname }" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <br>
+    {% if not app.user %}
+        <div class="alert alert-danger">You are not even connected !</div>
+    {% elseif account.id != app.user.id %}
+        <div class="alert alert-danger">You should not be able to modify this account !</div>
+    {% else %}
+        <div class="box">
+        <h1>{{ title }}</h1>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.address, {label: 'Address'}) }}
+        {{ form_row(form.city, {label: 'City'}) }}
+        {{ form_row(form.postcode, {label: 'PostCode'}) }}
+        {{ form_row(form.phone, {label: 'Phone'}) }}
+        <button type="submit" class="w-100 p-3 btn btn-warning btn-primary btn-lg btn-block">update</button>
+        {{ form_end(form) }}
+    {% endif %}
+{% endblock %}

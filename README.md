@@ -2,12 +2,12 @@
 
 ## Authors 
 
-PLATEL-LENTZ Mathis (plat0010), 
-BALEZ Théo (bale0011), 
-GOMES Raphaël (gome0057), 
-CADALEN Adrien (cada0003),
-BITSINDOU Emmanuel (bits0002),
-LECOURT HUMBERT Tom (leco0129)
+PLATEL-LENTZ Mathis, 
+BALEZ Théo, 
+GOMES Raphaël, 
+CADALEN Adrien,
+BITSINDOU Emmanuel,
+LECOURT HUMBERT Tom
 
 ## Project description
 
